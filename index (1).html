@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Civil Service Reviewer</title>
+<meta name="description" content="Professional-level Philippine Civil Service Exam practice reviewer. Made by Jelaica Baron.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#020617;--pn:#0f172a;--bd:#1e293b;--tx:#e8edf7;--mut:#8aa0bd;--pri:#1d5cff;--pt:#4d94ff;--ok:#34d399;--okb:#07281f;--no:#fb7185;--nob:#33101a;--nav:#0a1122;--ch:#131e36;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html[data-theme=light]{--bg:#f1f5f9;--pn:#fff;--bd:#d7dfeb;--tx:#0f172a;--mut:#5b6b82;--pt:#1d5cff;--ok:#0f7b4f;--okb:#dcf5e8;--no:#be123c;--nob:#fde4ea;--nav:#fff;--ch:#f1f5f9}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.55 "Plus Jakarta Sans",system-ui,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--nav);z-index:10}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}.mut{color:var(--mut)}.sm{font-size:.85rem}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--nav);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:20px;padding:12px 18px;overflow-x:auto}
+.brand{font:700 1.3rem Fraunces,Georgia,serif;white-space:nowrap}
+nav button.t{background:none;border:0;border-bottom:2px solid transparent;color:var(--mut);font:600 1rem inherit;padding:6px 0;cursor:pointer;white-space:nowrap}
+nav button.t.on{color:var(--pt);border-color:var(--pt)}
+.sp{flex:1}
+.w{max-width:1100px;margin:0 auto;padding:22px 18px 60px}
+h1{font:700 clamp(2rem,6vw,3rem)/1.1 Fraunces,Georgia,serif;margin:6px 0 10px}
+h3{font-size:1.05rem;margin:22px 0 8px}h4{margin:0 0 6px}
+.eye{color:var(--pt);font-size:.9rem}
+.hd{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;border-bottom:1px solid var(--bd);padding-bottom:20px;margin-bottom:22px;flex-wrap:wrap}
+.g{display:grid;gap:18px}@media(min-width:900px){.g{grid-template-columns:1fr 340px}}
+.pn{background:var(--pn);border:1px solid var(--bd);border-radius:18px;padding:22px;margin-bottom:18px}
+.pn h3:first-child{margin-top:0}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--ch);border:1px solid var(--bd);color:var(--tx);border-radius:12px;padding:9px 14px;font:500 .95rem inherit;cursor:pointer}
+.chip.on{background:var(--pri);border-color:var(--pri);color:#fff}
+.chip .n{font:.8rem "JetBrains Mono",monospace;opacity:.7;margin-left:6px}
+.two{display:grid;gap:16px}@media(min-width:640px){.two{grid-template-columns:1fr 1fr}}
+.seg{display:flex;background:var(--ch);border:1px solid var(--bd);border-radius:12px;padding:4px}
+.seg button{flex:1;background:none;border:0;color:var(--mut);padding:9px;border-radius:9px;font:600 .9rem inherit;cursor:pointer}
+.seg button.on{background:var(--bg);color:var(--tx)}
+.ft{border-top:1px solid var(--bd);margin-top:22px;padding-top:18px}
+.btn{background:var(--pri);color:#fff;border:0;border-radius:14px;padding:14px 26px;font:700 1rem inherit;cursor:pointer}
+.btn:disabled{opacity:.4}.btn.full{width:100%;margin-top:12px}
+.btn2{background:none;border:1px solid var(--bd);color:var(--tx);border-radius:12px;padding:10px 16px;font:600 .95rem inherit;cursor:pointer}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}.kv div{border-bottom:1px solid var(--bd);padding:8px 0}.kv b{display:block;font-size:1.6rem}
+.sr{display:block;width:100%;text-align:left;background:none;border:0;color:var(--tx);padding:8px 0;cursor:pointer;font:inherit}
+.bar{height:8px;background:var(--bd);border-radius:8px;overflow:hidden;margin:6px 0}.bar i{display:block;height:100%;background:#475a78}.bar.ok i,.bar.q i{background:var(--pri)}
+.q{font-size:1.2rem;font-weight:700;flex:1}
+.opt{display:flex;gap:12px;width:100%;text-align:left;background:var(--ch);border:2px solid var(--bd);color:var(--tx);border-radius:14px;padding:14px;margin-top:10px;font:inherit;cursor:pointer}
+.opt b{color:var(--mut);min-width:1.4em}.opt.ok{border-color:var(--ok);background:var(--okb)}.opt.no{border-color:var(--no);background:var(--nob)}.opt:disabled{cursor:default}
+.star{background:none;border:0;font-size:1.6rem;color:#f5b301;cursor:pointer}
+.fb{margin-top:16px;padding:12px 14px;border-radius:12px}.fb.g{background:var(--okb)}.fb.b{background:var(--nob)}
+.ex{margin-top:12px;border-left:4px solid var(--pri);padding:6px 14px}.ex ol{margin:0;padding-left:20px}.ex p{margin:0}
+.tip{margin:12px 0 16px;padding:10px 14px;background:var(--ch);border-radius:12px;font-size:.92rem}
+.qtop{display:flex;justify-content:space-between;font-size:.9rem;margin-bottom:6px}
+.huge{font-size:3.4rem;font-weight:700;text-align:center}.tc{text-align:center}
+.bi{display:flex;gap:8px;align-items:flex-start;border-bottom:1px solid var(--bd);padding:10px 0}.bi details{flex:1}.bi summary{cursor:pointer}
+.bo{padding:4px 12px;color:var(--mut)}.bo.ok{color:var(--ok);font-weight:600}
+input[type=search]{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--ch);color:var(--tx);font:inherit;margin:12px 0}
+.fg{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}.fg svg,.opt svg{background:#fff;border:1px solid #8795ab;border-radius:6px;width:72px;height:72px;flex:none}.opt{align-items:center}
+.dl{font-size:.72rem;padding:2px 9px;border-radius:99px;color:#fff;font-weight:700}.d0{background:#16a34a}.d1{background:#d97706}.d2{background:#dc2626}
+a{color:var(--pt)}
+</style>
+</head>
+<body>
+<nav><span class="brand">Civil Service Reviewer<small style="display:block;font:600 .7rem 'Plus Jakarta Sans',system-ui,sans-serif;color:var(--pt)">Made by Jelaica Baron</small></span>
+<button class="t" data-a="nav" data-v="practice">Practice</button><button class="t" data-a="nav" data-v="bank">Question Bank</button><button class="t" data-a="nav" data-v="history">History</button><button class="t" data-a="nav" data-v="syllabus">Syllabus</button>
+<span class="sp"></span><button class="btn" style="padding:10px 18px;white-space:nowrap" data-a="quick">Quick 10-Item Drill</button></nav>
+<main class="w" id="app"></main>
+<footer style="text-align:center;padding:10px 18px 36px;color:var(--mut);font-size:.9rem">Made by <b style="color:var(--tx)">Jelaica Baron</b> · Civil Service Exam Reviewer</footer>
+<script>
+
+// [category, question, [correct, ...wrong], explanation]
+const BANK=[
+["Vocabulary","Choose the synonym of EPHEMERAL.",["Short-lived","Eternal","Heavy","Bright"],"Ephemeral means lasting a very short time."],
+["Vocabulary","Choose the antonym of BENEVOLENT.",["Malevolent","Kind","Generous","Gentle"],"Benevolent means well-meaning; malevolent means wishing harm."],
+["Vocabulary","METICULOUS means:",["Extremely careful about details","Careless","Lazy","Quick-tempered"],"A meticulous person pays close attention to detail."],
+["Vocabulary","Choose the synonym of CANDID.",["Frank","Secretive","Rude","Shy"],"Candid means honest and straightforward."],
+["Vocabulary","Choose the antonym of SCARCE.",["Abundant","Rare","Limited","Few"],"Scarce means in short supply."],
+["Vocabulary","AMBIGUOUS means:",["Open to more than one meaning","Very clear","Very large","Easily broken"],"An ambiguous statement can be understood in different ways."],
+["Grammar","Neither of the candidates ___ qualified.",["is","are","were","have been"],"Neither is singular, so it takes a singular verb."],
+["Grammar","Choose the correct spelling.",["Accommodate","Accomodate","Acommodate","Accomadate"],"Accommodate has double c and double m."],
+["Grammar","She is the ___ of the two sisters.",["taller","tallest","more tall","most tall"],"Use the comparative when comparing two."],
+["Grammar","Each of the employees must submit ___ report on time.",["his or her","their own","our","its"],"Each is singular, so a singular pronoun is used."],
+["Grammar","Either the manager or the clerks ___ responsible.",["are","is","was","has been"],"The verb agrees with the nearer subject, clerks."],
+["Grammar","The committee ___ its decision yesterday.",["announced","announce","have announced","announcing"],"Past tense with a singular collective noun."],
+["Numerical","What is 15% of 240?",["36","32","40","24"],"0.15 × 240 = 36."],
+["Numerical","3/4 + 2/3 = ?",["17/12","5/7","5/12","7/12"],"9/12 + 8/12 = 17/12."],
+["Numerical","Two numbers are in the ratio 3:5 and their sum is 160. What is the larger number?",["100","60","80","96"],"160 ÷ 8 = 20, and 5 × 20 = 100."],
+["Numerical","Find the average of 12, 18, 24, 30 and 36.",["24","22","26","30"],"Sum is 120; 120 ÷ 5 = 24."],
+["Numerical","Ana finishes a job in 6 days, Ben in 12 days. How many days if they work together?",["4","9","5","3"],"1/6 + 1/12 = 3/12 = 1/4, so 4 days."],
+["Numerical","An item costs ₱800 with a 25% discount. What is the sale price?",["₱600","₱200","₱640","₱700"],"800 − 200 = 600."],
+["Numerical","Next number: 2, 6, 18, 54, ?",["162","108","144","216"],"Each term is multiplied by 3."],
+["Numerical","Simple interest on ₱5,000 at 4% for 3 years?",["₱600","₱200","₱500","₱650"],"5000 × 0.04 × 3 = 600."],
+["Analytical","All public servants must be honest. Ramon is a public servant. Therefore:",["Ramon must be honest","Ramon is not honest","Ramon is rich","Nothing can be concluded"],"Valid deduction from the two premises."],
+["Analytical","Doctor : Hospital :: Teacher : ?",["School","Student","Book","Chalk"],"A doctor works in a hospital; a teacher works in a school."],
+["Analytical","Next letter: A, C, F, J, ?",["O","N","M","P"],"Gaps grow by 1: +2, +3, +4, +5."],
+["Analytical","Which does not belong?",["Carrot","Mango","Apple","Banana"],"Carrot is a vegetable; the others are fruits."],
+["Analytical","Ana is taller than Ben. Ben is taller than Carl. Who is the shortest?",["Carl","Ben","Ana","Cannot be determined"],"Ana > Ben > Carl."],
+["Philippine Constitution & Laws","The Code of Conduct and Ethical Standards for Public Officials and Employees is:",["RA 6713","RA 3019","RA 7160","RA 9165"],"RA 6713 is the Code of Conduct. RA 3019 is the Anti-Graft law."],
+["Philippine Constitution & Laws","The Anti-Graft and Corrupt Practices Act is:",["RA 3019","RA 6713","RA 7160","RA 8293"],"RA 3019, enacted in 1960."],
+["Philippine Constitution & Laws","The Civil Service Commission is composed of a Chairman and how many Commissioners?",["Two","Three","Four","Five"],"Chairman plus two Commissioners (1987 Constitution, Art. IX-B)."],
+["Philippine Constitution & Laws","The term of the President of the Philippines is:",["Six years, no reelection","Four years, with reelection","Six years, with one reelection","Five years"],"Single six-year term."],
+["Philippine Constitution & Laws","Minimum age to be a Senator of the Philippines:",["35","30","40","25"],"At least 35 years old on election day."],
+["Philippine Constitution & Laws","The Bill of Rights is found in which Article of the 1987 Constitution?",["Article III","Article II","Article IV","Article VI"],"Article III is the Bill of Rights."],
+["Philippine Constitution & Laws","SALN stands for:",["Statement of Assets, Liabilities and Net Worth","Statement of Annual Local Needs","Summary of Assets and Local Notes","Schedule of Assets, Loans and Net income"],"Public officials must file a SALN under RA 6713."],
+["Philippine Constitution & Laws","Philippine Independence was proclaimed on:",["June 12, 1898","July 4, 1946","August 13, 1898","March 31, 1901"],"Proclaimed in Kawit, Cavite on June 12, 1898."],
+["Vocabulary","Synonym of DILIGENT.",["Hardworking","Lazy","Careless","Slow"],"Diligent means showing steady, careful effort."],
+["Vocabulary","Antonym of FRUGAL.",["Wasteful","Thrifty","Careful","Economical"],"Frugal means economical, so wasteful is the opposite."],
+["Vocabulary","OBSOLETE means:",["No longer in use","Brand new","Very valuable","Popular"],"Obsolete describes something outdated or no longer used."],
+["Vocabulary","Synonym of PRAGMATIC.",["Practical","Dreamy","Emotional","Stubborn"],"A pragmatic person focuses on what works in reality."],
+["Vocabulary","Antonym of TRANSPARENT.",["Opaque","Clear","Thin","Bright"],"Transparent means see-through; opaque blocks light."],
+["Vocabulary","VERBOSE means:",["Using too many words","Silent","Brief","Angry"],"Verbose speech or writing is wordy."],
+["Vocabulary","Synonym of RELUCTANT.",["Unwilling","Eager","Happy","Certain"],"Reluctant means hesitant or unwilling."],
+["Vocabulary","Antonym of EXPAND.",["Contract","Grow","Stretch","Enlarge"],"Expand means to grow bigger; contract means to shrink."],
+["Grammar","The news ___ shocking.",["was","were","are","have been"],"News is singular even though it ends in s."],
+["Grammar","Choose the correct sentence.",["I have been working here since 2020.","I am working here since 2020.","I work here since 2020.","I was working here since 2020 until now."],"Use present perfect continuous with since for an action that continues to now."],
+["Grammar","The new policy will ___ all employees.",["affect","effect","affects","effects"],"Affect is the verb (to influence); effect is usually a noun. After will, use the base form."],
+["Grammar","___ going to submit the report tomorrow.",["They’re","Their","There","Theyre"],"They’re = they are."],
+["Grammar","Between you and ___, the plan is risky.",["me","I","myself","mine"],"Use the object pronoun after a preposition."],
+["Grammar","The number of applicants ___ increasing.",["is","are","were","have been"],"The number of is singular; a number of is plural."],
+["Grammar","If I ___ you, I would accept the offer.",["were","was","am","will be"],"Use were for contrary-to-fact conditions."],
+["Grammar","Choose the correct spelling.",["Separate","Seperate","Seprate","Separete"],"Separate has an a after the p."],
+["Analytical","Next number: 1, 4, 9, 16, ?",["25","20","24","36"],"These are squares: 1², 2², 3², 4², so the next is 5² = 25."],
+["Analytical","Pen : Write :: Knife : ?",["Cut","Sharp","Kitchen","Metal"],"A pen is used to write; a knife is used to cut."],
+["Analytical","Which does not belong?",["Cube","Square","Circle","Triangle"],"Cube is three-dimensional; the others are flat shapes."],
+["Analytical","All birds have wings. A sparrow is a bird. Therefore:",["A sparrow has wings","A sparrow cannot fly","All winged animals are birds","No conclusion"],"The sparrow belongs to the group of birds, so it has wings."],
+["Analytical","Next number: 3, 6, 11, 18, 27, ?",["38","36","40","34"],"Differences are 3, 5, 7, 9, so the next difference is 11: 27 + 11 = 38."],
+["Analytical","If today is Wednesday, what day will it be 10 days from now?",["Saturday","Friday","Sunday","Thursday"],"10 ÷ 7 leaves 3, so Wednesday + 3 days = Saturday."],
+["Analytical","What is the angle between the clock hands at 3:00?",["90°","60°","120°","45°"],"Each hour mark is 30°, and 3 hours × 30° = 90°."],
+["Analytical","If CAT = 3120 (C=3, A=1, T=20), then DOG = ?",["4157","4167","3157","4147"],"D=4, O=15, G=7, so DOG = 4 15 7 = 4157."],
+["Philippine Constitution & Laws","RA 7160 is the:",["Local Government Code of 1991","Data Privacy Act","Anti-Graft Law","Code of Conduct for Public Officials"],"RA 7160 governs local government units."],
+["Philippine Constitution & Laws","RA 10173 is the:",["Data Privacy Act of 2012","Cybercrime Prevention Act","Ease of Doing Business Act","Anti-Red Tape Act"],"RA 10173 protects personal information."],
+["Philippine Constitution & Laws","RA 11032 is known as the:",["Ease of Doing Business and Efficient Government Service Delivery Act","Data Privacy Act","Local Government Code","Comprehensive Dangerous Drugs Act"],"RA 11032 (2018) amended the Anti-Red Tape Act."],
+["Philippine Constitution & Laws","RA 9165 is the:",["Comprehensive Dangerous Drugs Act of 2002","Anti-Graft Law","Data Privacy Act","Anti-Money Laundering Act"],"RA 9165 covers illegal drugs."],
+["Philippine Constitution & Laws","Article IX-B of the 1987 Constitution deals with the:",["Civil Service Commission","Commission on Elections","Commission on Audit","Judiciary"],"IX-A is common provisions, IX-B Civil Service, IX-C COMELEC, IX-D COA."],
+["Philippine Constitution & Laws","The term of a Senator is:",["Six years, up to two consecutive terms","Three years, up to three terms","Six years, no limit","Four years, up to two terms"],"Senators serve six years with a limit of two consecutive terms."],
+["Philippine Constitution & Laws","The term of a Member of the House of Representatives is:",["Three years, up to three consecutive terms","Six years, up to two terms","Four years, up to two terms","Three years, no limit"],"House members serve three years, maximum three consecutive terms."],
+["Philippine Constitution & Laws","How many Senators are there in the Philippines?",["24","12","20","30"],"The Senate has 24 members elected at large."],
+["Philippine Constitution & Laws","“Public office is a public trust” is found in which Article?",["Article XI","Article III","Article VII","Article IX"],"Article XI is Accountability of Public Officers."],
+["Philippine Constitution & Laws","The eight rays of the sun in the Philippine flag represent:",["The first eight provinces that revolted against Spain","The eight major islands","The eight national heroes","The eight regions"],"They stand for the first eight provinces placed under martial law by Spain."],
+["Philippine Constitution & Laws","The first President of the Philippines was:",["Emilio Aguinaldo","Manuel Quezon","Jose P. Laurel","Sergio Osmeña"],"Aguinaldo led the First Philippine Republic in 1899."],
+["Philippine Constitution & Laws","The writ of habeas corpus protects a person from:",["Illegal detention","Illegal search","Unfair taxation","Libel"],"It compels authorities to justify a person’s detention."],
+["General Information","The longest river in the Philippines is the:",["Cagayan River","Pasig River","Agusan River","Pampanga River"],"The Cagayan River in northern Luzon is the longest."],
+["General Information","The highest mountain in the Philippines is:",["Mount Apo","Mount Pulag","Mount Mayon","Mount Kanlaon"],"Mount Apo in Mindanao stands about 2,954 meters."],
+["General Information","The largest island in the Philippines is:",["Luzon","Mindanao","Samar","Palawan"],"Luzon is the largest; Mindanao is second."]
+];
+
+// Generated numerical questions, each with a worked solution
+(()=>{
+let sd=20260;const R=()=>(sd=(sd*1103515245+12345)%2147483648)/2147483648;
+const ri=(a,b)=>a+Math.floor(R()*(b-a+1)),pk=a=>a[Math.floor(R()*a.length)];
+const seen=new Set(BANK.map(b=>b[1])),peso=n=>"₱"+n.toLocaleString("en-US");
+const mk=(q,a,sol,f=x=>String(x))=>{if(seen.has(q))return;seen.add(q);const st=Math.max(1,Math.round(a/10)),w=[];for(const x of [a+st,a-st,a+2*st,a*2,a-2*st,a+3*st,Math.round(a/2)]){if(x>0&&x!==a&&!w.includes(x))w.push(x);if(w.length==3)break}BANK.push(["Numerical",q,[a,...w].map(x=>f(x)),sol])};
+const nm=["Ana","Ben","Carla","Dan","Ella","Fred","Gina","Hector"],tk=["finish a report","paint a wall","sort the files"];
+const wp=[[6,12],[10,15],[12,24],[20,30],[15,30],[18,9],[30,60],[24,8],[21,28],[14,35],[4,12],[45,90]];
+for(let n=0;n<45;n++){
+ const p=pk([5,10,15,20,25,30,35,40,45,60,75]),N=20*ri(3,60);
+ mk(`What is ${p}% of ${N}?`,p*N/100,`${p}% = ${p}/100. ${p}/100 × ${N} = ${p*N/100}.`);
+ const P=100*ri(4,60),d=pk([10,15,20,25,30,40]),dis=P*d/100;
+ mk(`A jacket priced at ${peso(P)} is sold with a ${d}% discount. What is the sale price?`,P-dis,`Discount = ${d}% × ${P} = ${dis}. Sale price = ${P} − ${dis} = ${P-dis}.`,peso);
+ const a=ri(1,7),b=ri(1,9),m=ri(2,20),S=(a+b)*m,L=Math.max(a,b);
+ if(a!==b)mk(`Two numbers are in the ratio ${a}:${b} and their sum is ${S}. What is the larger number?`,L*m,`Total parts = ${a} + ${b} = ${a+b}. One part = ${S} ÷ ${a+b} = ${m}. Larger = ${L} × ${m} = ${L*m}.`);
+ const av=ri(40,90),xs=[0,0,0,0].map(()=>av+ri(-15,15)),last=5*av-xs.reduce((u,v)=>u+v,0);
+ mk(`Find the average of ${[...xs,last].join(", ")}.`,av,`Sum = ${5*av}. Average = ${5*av} ÷ 5 = ${av}.`);
+ const [wa,wb]=pk(wp),x=nm[n%8],y=nm[(n+3)%8],t=pk(tk),wd=wa*wb/(wa+wb);
+ mk(`${x} can ${t} in ${wa} days while ${y} can do it in ${wb} days. Working together, how many days will they take?`,wd,`Combined rate = 1/${wa} + 1/${wb} = ${wa+wb}/${wa*wb} per day. Days = ${wa*wb}/${wa+wb} = ${wd}.`);
+ const IP=1000*ri(2,50),r=pk([3,4,5,6,8,10]),yr=ri(1,5),I=IP*r*yr/100;
+ mk(`Find the simple interest on ${peso(IP)} at ${r}% per year for ${yr} years.`,I,`I = P × r × t = ${IP} × ${r}% × ${yr} = ${I}.`,peso);
+ const sp=5*ri(6,18),h=ri(2,9),k=n%3;
+ if(k===0)mk(`A bus travels at ${sp} km/h for ${h} hours. How far does it go (km)?`,sp*h,`Distance = speed × time = ${sp} × ${h} = ${sp*h} km.`);
+ else if(k===1)mk(`A car covers ${sp*h} km in ${h} hours. What is its average speed (km/h)?`,sp,`Speed = distance ÷ time = ${sp*h} ÷ ${h} = ${sp} km/h.`);
+ else mk(`How many hours will it take to travel ${sp*h} km at ${sp} km/h?`,h,`Time = distance ÷ speed = ${sp*h} ÷ ${sp} = ${h} hours.`);
+ if(n%2===0){const s0=ri(1,30),df=ri(2,9),tm=[0,1,2,3].map(j=>s0+j*df);
+ mk(`Find the next number: ${tm.join(", ")}, ?`,s0+4*df,`The pattern adds ${df} each time. ${s0+3*df} + ${df} = ${s0+4*df}.`)}
+ else{const s0=ri(1,5),g=pk([2,3]),tm=[0,1,2,3].map(j=>s0*g**j);
+ mk(`Find the next number: ${tm.join(", ")}, ?`,s0*g**4,`The pattern multiplies by ${g} each time. ${s0*g**3} × ${g} = ${s0*g**4}.`)}
+ const C=100*ri(3,50),mu=pk([10,15,20,25,30,40,50]),pf=C*mu/100;
+ mk(`A seller buys an item for ${peso(C)} and sells it at a ${mu}% profit. What is the selling price?`,C+pf,`Profit = ${mu}% × ${C} = ${pf}. Selling price = ${C} + ${pf} = ${C+pf}.`,peso);
+ const c0=ri(3,60);
+ mk(`The sum of three consecutive integers is ${3*c0+3}. What is the smallest?`,c0,`Let the integers be n, n+1, n+2. Then 3n + 3 = ${3*c0+3}, so n = ${c0}.`);
+}
+})();
+
+// Questions matched to the CSC syllabus: [Subject · Subtopic, question, [correct, ...wrong], solution]
+BANK.push(
+['Verbal Ability · Sentence Completion','The manager praised the staff for their ___ in meeting the deadline.',['diligence','laziness','confusion','reluctance'],'Praise fits a positive quality, and diligence is the only positive choice.'],
+['Verbal Ability · Sentence Completion','She was tired; ___, she finished the report.',['nevertheless','therefore','because','for example'],'Nevertheless shows contrast between being tired and still finishing.'],
+['Verbal Ability · Sentence Completion','Not only is she intelligent, ___ she is also hardworking.',['but','and','or','so'],'The correlative pair is not only ... but also.'],
+['Verbal Ability · Sentence Completion','The report was so ___ that nobody understood it.',['confusing','clear','short','simple'],'Nobody understood it, so the report must have been confusing.'],
+['Verbal Ability · Sentence Completion','Ang mabuting lingkod-bayan ay ___ sa tungkulin.',['tapat','tamad','mayabang','pabaya'],'Ang mabuting lingkod-bayan ay tapat sa tungkulin.'],
+['Verbal Ability · Word Meaning','Kasingkahulugan ng DALUBHASA.',['Eksperto','Baguhan','Mag-aaral','Bisita'],'Ang dalubhasa ay taong bihasa o eksperto sa isang larangan.'],
+['Verbal Ability · Word Meaning','Kasalungat ng MASAYA.',['Malungkot','Masigla','Maligaya','Tuwang-tuwa'],'Ang kabaligtaran ng masaya ay malungkot.'],
+['Verbal Ability · Word Meaning','Kahulugan ng BALISA.',['Hindi mapakali','Masaya','Pagod','Gutom'],'Ang balisa ay nababahala o hindi mapakali.'],
+['Verbal Ability · Error Recognition','Find the error: Each of the students have submitted their requirements.',['have (should be has)','Each of the students','submitted','their requirements'],'Each is singular, so the verb should be has.'],
+['Verbal Ability · Error Recognition','Find the error: The books on the table is mine.',['is (should be are)','The books','on the table','mine'],'The subject books is plural, so use are.'],
+['Verbal Ability · Error Recognition','Alin ang tamang pangungusap?',['Umalis siya nang hindi nagpapaalam.','Umalis siya ng hindi nagpapaalam.','Umalis siya, ng hindi nagpapaalam.','Umalis ng siya hindi nagpapaalam.'],'Ang nang ang ginagamit na pangatnig sa kahulugang “without” o “noong”.'],
+['Verbal Ability · Sentence Structure','Choose the sentence with correct parallel structure.',['She likes reading, writing, and traveling.','She likes reading, writing, and to travel.','She likes to read, writing, and travel.','She likes read, write, and traveling.'],'Items in a series must have the same form: reading, writing, traveling.'],
+['Verbal Ability · Sentence Structure','Which is a complete sentence?',['The employees arrived early.','The employees who arrived early.','Arriving early at the office.','Because the employees arrived early.'],'A complete sentence needs a subject and a main verb that expresses a full thought.'],
+['Verbal Ability · Sentence Structure','Buuin ang pangungusap: sa bulwagan / nagtipon / ang mga empleyado / ay',['Ang mga empleyado ay nagtipon sa bulwagan.','Nagtipon ay sa bulwagan ang mga empleyado.','Sa bulwagan ay ang mga empleyado nagtipon.','Ay nagtipon ang sa bulwagan mga empleyado.'],'Ayos na karaniwan: paksa + ay + panaguri.'],
+['Verbal Ability · Paragraph Organization','Arrange: (1) Finally, submit the form at the window. (2) First, fill out the application form. (3) Next, attach the required documents.',['2-3-1','1-2-3','3-2-1','2-1-3'],'Signal words First, Next, Finally give the order 2, 3, 1.'],
+['Verbal Ability · Paragraph Organization','Arrange: (1) As a result, many commuters arrived late. (2) Heavy rain flooded major roads this morning. (3) Traffic came to a standstill.',['2-3-1','1-2-3','3-1-2','2-1-3'],'Cause (rain) comes first, then effect (traffic), then result (late arrivals).'],
+['Verbal Ability · Reading Comprehension','Passage: Public servants are expected to serve with integrity. They must place the public interest above personal gain and treat every citizen fairly, regardless of status. Question: Public servants must place ___ above personal gain.',['the public interest','their salary','their family','the rules'],'The passage says they must place the public interest above personal gain.'],
+['Verbal Ability · Reading Comprehension','Passage: Public servants are expected to serve with integrity. They must place the public interest above personal gain and treat every citizen fairly, regardless of status. Question: What is the main idea?',['Public servants must act with integrity and fairness.','Public servants earn low pay.','Citizens differ in status.','Personal gain is important.'],'The whole passage is about integrity and fairness in public service.'],
+['Verbal Ability · Reading Comprehension','Passage: Recycling reduces the garbage sent to landfills and conserves natural resources. When communities segregate waste at the source, collection becomes faster and more materials can be reused. Question: What happens when communities segregate waste at the source?',['Collection is faster and more materials are reused','Garbage increases','Landfills expand','Recycling stops'],'The passage states this directly in its second sentence.'],
+['Numerical Ability · Basic Operations','Evaluate: 8 + 6 × 3 − 4 ÷ 2',['24','19','26','22'],'PEMDAS: multiply and divide first. 8 + 18 − 2 = 24.'],
+['Numerical Ability · Basic Operations','Evaluate: (12 − 4) × 3 + 6',['30','36','18','24'],'Parentheses first: 8 × 3 = 24, then 24 + 6 = 30.'],
+['Numerical Ability · Basic Operations','0.6 × 0.5 = ?',['0.3','3','0.03','0.11'],'6 × 5 = 30, and two decimal places gives 0.30 = 0.3.'],
+['Numerical Ability · Basic Operations','1/2 ÷ 1/4 = ?',['2','1/8','1/2','4'],'Invert and multiply: 1/2 × 4/1 = 2.'],
+['Numerical Ability · Basic Operations','12.5 + 7.75 = ?',['20.25','19.25','20.75','21.25'],'Align decimals: 12.50 + 7.75 = 20.25.'],
+['Numerical Ability · Number Sequence','Next number: 2, 3, 5, 8, 12, ?',['17','16','18','15'],'Differences are 1, 2, 3, 4, so add 5: 12 + 5 = 17.'],
+['Numerical Ability · Number Sequence','Next number: 100, 91, 82, 73, ?',['64','63','65','62'],'Subtract 9 each time: 73 − 9 = 64.'],
+['Numerical Ability · Word Problems','Mario is twice as old as Nena. The sum of their ages is 36. How old is Nena?',['12','18','9','24'],'Let Nena = x. Then x + 2x = 36, so 3x = 36 and x = 12.'],
+['Numerical Ability · Word Problems','In 5 years, Ben will be 25. How old was he 3 years ago?',['17','22','20','15'],'Now he is 25 − 5 = 20. Three years ago: 20 − 3 = 17.'],
+['Numerical Ability · Word Problems','A salary of ₱20,000 is increased by 8%. What is the new salary?',['₱21,600','₱21,000','₱20,800','₱22,000'],'Increase = 8% × 20,000 = 1,600. New salary = 21,600.'],
+['Analytical Ability · Word Analogy','Hot : Cold :: Day : ?',['Night','Sun','Morning','Light'],'Hot and cold are opposites, and so are day and night.'],
+['Analytical Ability · Word Analogy','Bird : Nest :: Bee : ?',['Hive','Honey','Flower','Wing'],'A bird lives in a nest; a bee lives in a hive.'],
+['Analytical Ability · Symbolic Logic / Abstract Reasoning','If it rains, the meeting is cancelled. The meeting was not cancelled. Therefore:',['It did not rain','It rained','The meeting is later','No conclusion'],'If rain always leads to cancellation, no cancellation means no rain (contrapositive).'],
+['Analytical Ability · Identifying Assumptions & Drawing Conclusions','Some clerks are certified. All certified staff get a bonus. Which must be true?',['Some clerks get a bonus','All clerks get a bonus','No clerk gets a bonus','All staff are clerks'],'The certified clerks are in the bonus group, so some clerks get a bonus.'],
+['Analytical Ability · Identifying Assumptions & Drawing Conclusions','Statement: “Submit your application early to avoid long lines.” Which is an assumption?',['Long lines are expected near the deadline','Applications are free','Everyone submits early','Lines never form'],'The advice only makes sense if lines get long close to the deadline.'],
+['Analytical Ability · Data Interpretation','Sales (₱ thousand): Jan 40, Feb 55, Mar 45, Apr 60. Which month had the highest sales?',['April','February','March','January'],'60 is the largest value, which is April.'],
+['Analytical Ability · Data Interpretation','Sales (₱ thousand): Jan 40, Feb 55, Mar 45, Apr 60. What is the total for the four months?',['200','190','210','180'],'40 + 55 + 45 + 60 = 200.'],
+['Analytical Ability · Data Interpretation','Sales (₱ thousand): Jan 40, Feb 55, Mar 45, Apr 60. What is the increase from March to April?',['15','10','20','5'],'60 − 45 = 15.'],
+['Analytical Ability · Data Interpretation','Of 200 employees, 90 prefer coffee, 70 prefer tea, and 40 prefer juice. What percent prefer tea?',['35%','30%','40%','45%'],'70 ÷ 200 = 0.35 = 35%.'],
+['Analytical Ability · Data Interpretation','Of 200 employees, 90 prefer coffee, 70 prefer tea, and 40 prefer juice. How many more prefer coffee than juice?',['50','20','30','60'],'90 − 40 = 50.'],
+['General Information · R.A. No. 6713','How many norms of conduct are listed in RA 6713?',['Eight','Five','Six','Ten'],'Section 4 lists eight norms, from commitment to public interest to simple and modest living.'],
+['General Information · R.A. No. 6713','Which is NOT a norm of conduct under RA 6713?',['Commitment to profit','Professionalism','Political neutrality','Simple living'],'Commitment to public interest is a norm; commitment to profit is not.'],
+['General Information · R.A. No. 6713','Under RA 6713, officials who lead modest lives are practicing:',['Simple living','Professionalism','Nationalism','Political neutrality'],'Simple and modest living is one of the eight norms.'],
+['General Information · R.A. No. 6713','Acting promptly on letters and requests of the public shows:',['Responsiveness to the public','Political neutrality','Nationalism','Professionalism'],'This is the norm of responsiveness to the public.'],
+['General Information · R.A. No. 6713','The SALN must be filed on or before:',['April 30 of every year','December 31','January 15','June 30'],'RA 6713 requires annual filing on or before April 30.'],
+['General Information · Peace and Human Rights Issues and Concepts','The Universal Declaration of Human Rights was adopted in:',['1948','1945','1966','1987'],'The UN General Assembly adopted it on December 10, 1948.'],
+['General Information · Peace and Human Rights Issues and Concepts','The Commission on Human Rights is created under which Article of the 1987 Constitution?',['Article XIII','Article III','Article IX','Article XI'],'Article XIII (Social Justice and Human Rights) creates the CHR.'],
+['General Information · Peace and Human Rights Issues and Concepts','RA 9262 is the:',['Anti-Violence Against Women and Their Children Act','Magna Carta of Women','Anti-Trafficking in Persons Act','Safe Spaces Act'],'RA 9262 (2004) protects women and children from violence.'],
+['General Information · Peace and Human Rights Issues and Concepts','RA 9710 is the:',['Magna Carta of Women','Anti-Violence Against Women Act','Data Privacy Act','Special Protection of Children Act'],'RA 9710 (2009) is the Magna Carta of Women.'],
+['General Information · Peace and Human Rights Issues and Concepts','RA 7610 is the:',['Special Protection of Children Against Abuse, Exploitation and Discrimination Act','Magna Carta of Women','Juvenile Justice Act','Anti-Graft Law'],'RA 7610 protects children from abuse and exploitation.'],
+['General Information · Peace and Human Rights Issues and Concepts','International Humanitarian Law mainly governs:',['Conduct during armed conflict','Foreign trade','Elections','Environmental protection'],'IHL sets rules to limit suffering and protect civilians in war.'],
+['General Information · Peace and Human Rights Issues and Concepts','Which is a civil and political right?',['Right to vote','Right to education','Right to health','Right to housing'],'Voting is civil-political; the others are economic, social, and cultural rights.'],
+['General Information · Environment Management and Protection','RA 9003 is the:',['Ecological Solid Waste Management Act of 2000','Clean Water Act','Clean Air Act','Climate Change Act'],'RA 9003 requires waste segregation and recycling.'],
+['General Information · Environment Management and Protection','RA 9275 is the:',['Philippine Clean Water Act of 2004','Clean Air Act','Solid Waste Management Act','Climate Change Act'],'RA 9275 addresses water pollution.'],
+['General Information · Environment Management and Protection','RA 8749 is the:',['Philippine Clean Air Act of 1999','Clean Water Act','Solid Waste Management Act','Climate Change Act'],'RA 8749 addresses air pollution.'],
+['General Information · Environment Management and Protection','RA 9729 is the:',['Climate Change Act of 2009','Clean Air Act','Clean Water Act','Disaster Risk Reduction Act'],'RA 9729 created the Climate Change Commission.'],
+['General Information · Environment Management and Protection','The agency mainly responsible for environmental protection and natural resources is the:',['DENR','DOH','DOST','DPWH'],'The Department of Environment and Natural Resources.'],
+['General Information · Environment Management and Protection','PD 1586 established the:',['Environmental Impact Statement System','Protected Areas System','Solid Waste Board','Climate Change Commission'],'PD 1586 (1978) requires environmental impact statements for projects.'],
+['General Information · Environment Management and Protection','The 3Rs of waste management are:',['Reduce, Reuse, Recycle','Reduce, Repair, Resell','Reuse, Reject, Return','Recycle, Remove, Replace'],'Reduce, Reuse, Recycle.'],
+['General Information · Environment Management and Protection','RA 11038 is the:',['Expanded National Integrated Protected Areas System Act','Clean Air Act','Wildlife Act','Forestry Code'],'RA 11038 (2018) expanded the protected areas system.']
+);
+
+// Sort every question into a syllabus subject and subtopic
+BANK.forEach(b=>{const c=b[0],q=b[1];if(c.includes(' · '))return;const T=q+' '+b[2][0];
+b[0]=c==='Vocabulary'?'Verbal Ability · Word Meaning':c==='Grammar'?'Verbal Ability · Error Recognition':
+c==='Numerical'?'Numerical Ability · '+(/next number/i.test(q)?'Number Sequence':/^(What is \d|Find the average|The sum of three|\d)/.test(q)?'Basic Operations':'Word Problems'):
+c==='Analytical'?(/next (number|letter)/i.test(q)?'Numerical Ability · Number Sequence':/::/.test(q)?'Analytical Ability · Word Analogy':/Therefore|conclusion/i.test(q)?'Analytical Ability · Identifying Assumptions & Drawing Conclusions':'Analytical Ability · Symbolic Logic / Abstract Reasoning'):
+/6713|SALN/.test(T)?'General Information · R.A. No. 6713':/Constitution|Article|Senator|term of|Commission|habeas|Bill of Rights/i.test(T)?'General Information · Philippine Constitution':'General Information · Other Laws & History'});
+
+// ---- extra generated content
+(()=>{
+let sd=777;const R=()=>(sd=(sd*1103515245+12345)%2147483648)/2147483648,ri=(a,b)=>a+Math.floor(R()*(b-a+1)),pk=a=>a[Math.floor(R()*a.length)];
+const sf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(R()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const seen=new Set(BANK.map(b=>b[1])),cap=s=>s[0].toUpperCase()+s.slice(1),oth=(a,x,n)=>sf(a.filter(y=>y!==x)).slice(0,n);
+const add=(c,q,a,wr,sol)=>{if(seen.has(q))return;const w=[...new Set(wr)].filter(x=>x!==a).slice(0,3);if(w.length<3)return;seen.add(q);BANK.push([c,q,[a,...w],sol])};
+const L2=s=>s.trim().split("\n").map(l=>l.trim().split("|"));
+// Vocabulary
+const V=L2(`abundant|plentiful|scarce|existing in large quantity
+adamant|firm|flexible|refusing to change one\u2019s mind
+adept|skilled|clumsy|highly skilled
+amiable|friendly|hostile|pleasant and good-natured
+brevity|conciseness|wordiness|shortness of expression
+candor|honesty|deceit|frankness in speech
+cease|stop|begin|to come to an end
+coherent|logical|confused|clear and well organized
+concur|agree|disagree|to be of the same opinion
+diminish|lessen|increase|to make or become smaller
+eloquent|articulate|inarticulate|fluent and persuasive in speaking
+fervent|passionate|indifferent|having intense feeling
+futile|useless|productive|incapable of producing results
+hinder|obstruct|assist|to create difficulties for
+impartial|fair|biased|treating all sides equally
+integrity|honesty|dishonesty|firm adherence to moral principles
+lenient|merciful|strict|not harsh in punishment
+mundane|ordinary|extraordinary|dull and routine
+negligent|careless|careful|failing to take proper care
+prudent|wise|reckless|acting with care and good judgment
+rigid|stiff|flexible|unable to bend or change
+tenacious|persistent|yielding|holding firmly to a purpose
+vague|unclear|precise|not clearly expressed
+zealous|enthusiastic|apathetic|full of eager devotion`),VC="Verbal Ability \u00b7 Word Meaning";
+V.forEach(([w,s,a,m])=>{const W=w.toUpperCase();
+add(VC,`Choose the synonym of ${W}.`,cap(s),[cap(a),...oth(V.map(x=>cap(x[1])),cap(s),4)],`${W} means ${m}. A synonym is ${s}. Beware of ${a}, which is the opposite.`);
+add(VC,`Choose the antonym of ${W}.`,cap(a),[cap(s),...oth(V.map(x=>cap(x[2])),cap(a),4)],`${W} means ${m}. Its opposite is ${a}. ${cap(s)} is a synonym, so it cannot be the antonym.`);
+add(VC,`${W} means:`,cap(m),oth(V.map(x=>cap(x[3])),cap(m),4),`${W} means ${m}. Synonym: ${s}. Antonym: ${a}.`)});
+// Analogies
+const AN=L2(`Eye|See|Ear|Hear
+Fish|Swim|Bird|Fly
+Judge|Court|Chef|Kitchen
+Book|Library|Painting|Museum
+Heat|Melt|Cold|Freeze
+Seed|Plant|Egg|Chick
+Glove|Hand|Sock|Foot
+Pilot|Airplane|Driver|Car
+Thermometer|Temperature|Clock|Time
+Author|Book|Composer|Song
+Hungry|Eat|Tired|Sleep
+Page|Book|Brick|Wall
+Whisper|Shout|Walk|Run
+Tall|Short|Wide|Narrow
+Student|Learn|Doctor|Heal
+Bark|Dog|Meow|Cat
+Petal|Flower|Leaf|Tree
+Key|Lock|Password|Account
+Calendar|Date|Compass|Direction
+Lion|Pride|Bee|Swarm`),SC="Analytical Ability \u00b7 Symbolic Logic / Abstract Reasoning";
+AN.forEach(([a,b,c,d])=>add("Analytical Ability \u00b7 Word Analogy",`${a} : ${b} :: ${c} : ?`,d,oth(AN.map(x=>x[3]),d,4),`Step 1: Find the relationship in the first pair. ${a} is linked to ${b}. Step 2: Apply the same relationship to ${c}. The best match is ${d}.`));
+// Syllogisms
+const N=["clerks","employees","graduates","volunteers","teachers","officers","nurses","applicants","engineers","drivers","writers","students"];
+for(let n=0;n<33;n++){const [a,b,c]=sf(N).slice(0,3),t=n%3;
+if(t==0)add("Analytical Ability \u00b7 Identifying Assumptions & Drawing Conclusions",`All ${a} are ${b}. All ${b} are ${c}. Therefore:`,`All ${a} are ${c}`,[`All ${c} are ${a}`,`No ${a} are ${c}`,`Some ${c} are not ${b}`],`Chain the statements: ${a} to ${b} to ${c}. Every one of the ${a} is among the ${b}, and every one of the ${b} is among the ${c}. So all ${a} are ${c}. The reverse does not follow.`);
+else if(t==1)add("Analytical Ability \u00b7 Identifying Assumptions & Drawing Conclusions",`No ${a} are ${b}. All ${c} are ${a}. Therefore:`,`No ${c} are ${b}`,[`All ${c} are ${b}`,`Some ${c} are ${b}`,`All ${b} are ${c}`],`The ${c} are inside the group of ${a}. The ${a} share nothing with the ${b}. So no ${c} are ${b}.`);
+else add("Analytical Ability \u00b7 Identifying Assumptions & Drawing Conclusions",`All ${a} are ${b}. Some ${c} are ${a}. Therefore:`,`Some ${c} are ${b}`,[`No ${c} are ${b}`,`All ${c} are ${b}`,`All ${b} are ${c}`],`The ${c} that are ${a} are also ${b}. So at least some ${c} are ${b}. Nothing says every ${c} is among the ${a}.`)}
+// Days of the week
+const D=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+for(let n=0;n<14;n++){const d=ri(0,6),k=ri(8,45),r=D[(d+k)%7];add(SC,`If today is ${D[d]}, what day will it be ${k} days from now?`,r,oth(D,r,4),`Step 1: Divide ${k} by 7. The remainder is ${k%7}. Step 2: Count ${k%7} day(s) forward from ${D[d]}. You reach ${r}.`)}
+// Data interpretation
+const MS=[["Jan","Feb","Mar","Apr"],["May","Jun","Jul","Aug"],["Sep","Oct","Nov","Dec"]],DI="Analytical Ability \u00b7 Data Interpretation",UN=["Sales (\u20b1 thousand)","Enrollees","Visitors","Reports filed"];
+const num=(q,a,sol)=>{const st=Math.max(1,Math.round(a/10)),w=[];for(const x of [a+st,a-st,a+2*st,a*2,a-2*st,Math.round(a/2)])if(x>0&&x!==a&&!w.includes(x))w.push(x);add(DI,q,String(a),w.slice(0,3).map(String),sol)};
+for(let n=0;n<48;n++){const m=pk(MS),u=pk(UN),v=sf([20,25,30,35,40,45,50,55,60,65,70,80]).slice(0,4),tb=m.map((x,i)=>`${x} ${v[i]}`).join(", "),H=`${u}: ${tb}. `,k=n%6,mx=Math.max(...v),mn=Math.min(...v),tot=v.reduce((p,c)=>p+c,0),hi=m[v.indexOf(mx)],lo=m[v.indexOf(mn)];
+if(k==0)add(DI,H+"Which month had the highest value?",hi,m.filter(x=>x!==hi),`Step 1: Read the values: ${tb}. Step 2: The largest is ${mx}. It belongs to ${hi}.`);
+else if(k==1)add(DI,H+"Which month had the lowest value?",lo,m.filter(x=>x!==lo),`Step 1: Read the values: ${tb}. Step 2: The smallest is ${mn}. It belongs to ${lo}.`);
+else if(k==2)num(H+"What is the total for the four months?",tot,`Step 1: List the values: ${v.join(", ")}. Step 2: Add them: ${v.join(" + ")} = ${tot}.`);
+else if(k==3)num(H+"What is the difference between the highest and the lowest value?",mx-mn,`Step 1: Highest = ${mx} and lowest = ${mn}. Step 2: ${mx} \u2212 ${mn} = ${mx-mn}.`);
+else if(k==4)num(H+`What is the sum of ${m[0]} and ${m[1]}?`,v[0]+v[1],`Step 1: ${m[0]} = ${v[0]} and ${m[1]} = ${v[1]}. Step 2: ${v[0]} + ${v[1]} = ${v[0]+v[1]}.`);
+else num(H+`What is the difference between ${m[0]} and ${m[3]}?`,Math.abs(v[3]-v[0]),`Step 1: ${m[0]} = ${v[0]} and ${m[3]} = ${v[3]}. Step 2: Subtract the smaller from the larger: ${Math.max(v[0],v[3])} \u2212 ${Math.min(v[0],v[3])} = ${Math.abs(v[3]-v[0])}.`)}
+// Laws
+const GI={E:"General Information \u00b7 Environment Management and Protection",H:"General Information \u00b7 Peace and Human Rights Issues and Concepts",O:"General Information \u00b7 Other Laws & History"};
+const LW=L2(`E|9003|Ecological Solid Waste Management Act of 2000
+E|9275|Philippine Clean Water Act of 2004
+E|8749|Philippine Clean Air Act of 1999
+E|9729|Climate Change Act of 2009
+E|11038|Expanded National Integrated Protected Areas System Act of 2018
+E|10121|Philippine Disaster Risk Reduction and Management Act of 2010
+E|9147|Wildlife Resources Conservation and Protection Act
+E|8550|Philippine Fisheries Code of 1998
+E|7586|National Integrated Protected Areas System Act of 1992
+H|9262|Anti-Violence Against Women and Their Children Act of 2004
+H|9710|Magna Carta of Women
+H|7610|Special Protection of Children Against Abuse, Exploitation and Discrimination Act
+H|9851|Philippine Act on Crimes Against International Humanitarian Law, Genocide, and Other Crimes Against Humanity
+H|10368|Human Rights Victims Reparation and Recognition Act of 2013
+H|7877|Anti-Sexual Harassment Act of 1995
+H|11313|Safe Spaces Act
+H|10627|Anti-Bullying Act of 2013
+H|9344|Juvenile Justice and Welfare Act of 2006
+H|10361|Domestic Workers Act
+H|8371|Indigenous Peoples\u2019 Rights Act of 1997
+O|6713|Code of Conduct and Ethical Standards for Public Officials and Employees
+O|3019|Anti-Graft and Corrupt Practices Act
+O|7160|Local Government Code of 1991
+O|9165|Comprehensive Dangerous Drugs Act of 2002
+O|10173|Data Privacy Act of 2012
+O|11032|Ease of Doing Business and Efficient Government Service Delivery Act of 2018
+O|9485|Anti-Red Tape Act of 2007
+O|10175|Cybercrime Prevention Act of 2012
+O|9160|Anti-Money Laundering Act of 2001
+O|6657|Comprehensive Agrarian Reform Law of 1988
+O|4670|Magna Carta for Public School Teachers
+O|7305|Magna Carta of Public Health Workers`);
+LW.forEach(([g,n,t])=>{const same=LW.filter(x=>x[0]===g);
+add(GI[g],`RA ${n} is known as the:`,t,oth(same.map(x=>x[2]),t,4),`Step 1: Recall the subject of the law. Step 2: RA ${n} is the ${t}. Tip: tie each number to its main topic.`);
+add(GI[g],`Which law is the ${t}?`,"RA "+n,oth(same.map(x=>"RA "+x[1]),"RA "+n,4),`The ${t} is Republic Act No. ${n}. Study the number together with the title.`)});
+})();
+// ---- visual abstract reasoning
+(()=>{
+let sd=4242;const R=()=>(sd=(sd*1103515245+12345)%2147483648)/2147483648,sf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(R()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const S=c=>`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 60' fill='none' stroke='#111' stroke-width='2'>${c}</svg>`,F=f=>f?" fill='#111'":"";
+const QM=S("<text x='30' y='43' font-size='34' text-anchor='middle' fill='#111' stroke='none'>?</text>");
+const C=(x,y,r,f)=>`<circle cx='${x}' cy='${y}' r='${r}'${F(f)}/>`;
+const dots=n=>S(Array.from({length:n},(_,i)=>C(30+(i-(n-1)/2)*Math.min(11,48/n),30,n>5?3:5,1)).join(""));
+const arrow=a=>S(`<path d='M30 8 L44 42 H16 Z' fill='#111' transform='rotate(${((a%360)+360)%360} 30 30)'/>`);
+const QD=["M30 30V10A20 20 0 0 1 50 30Z","M30 30H50A20 20 0 0 1 30 50Z","M30 30V50A20 20 0 0 1 10 30Z","M30 30H10A20 20 0 0 1 30 10Z"];
+const quad=k=>S(`<circle cx='30' cy='30' r='20'/><path d='${QD[(k%4+4)%4]}' fill='#111'/>`);
+const SH={circle:f=>C(30,30,16,f),square:f=>`<rect x='14' y='14' width='32' height='32'${F(f)}/>`,triangle:f=>`<path d='M30 12 L48 46 H12 Z'${F(f)}/>`,diamond:f=>`<path d='M30 10 L50 30 L30 50 L10 30 Z'${F(f)}/>`,cross:f=>`<path d='M24 10h12v14h14v12H36v14H24V36H10V24h14Z'${F(f)}/>`};
+const shp=(k,f)=>S(SH[k](f));
+const grid=(n,rev)=>S(Array.from({length:9},(_,i)=>`<rect x='${10+(i%3)*14}' y='${10+Math.floor(i/3)*14}' width='14' height='14'${F(rev?i>=9-n:i<n)}/>`).join(""));
+const big=r=>S(C(30,30,r,0));
+const P4=[[18,18],[42,18],[42,42],[18,42]],pos=p=>{const [x,y]=P4[(p%4+4)%4];return S("<rect x='8' y='8' width='44' height='44'/>"+C(x,y,6,1))};
+const PZ=[],dn=d=>d>0?"clockwise":"counterclockwise";
+for(const k of [3,4])PZ.push({s:Array.from({length:k},(_,i)=>dots(i+1)),a:dots(k+1),w:[dots(k),dots(k+2),dots(k-1)],sol:`Step 1: Count the circles in each figure: 1, 2, 3${k==4?", 4":""}. Step 2: Each figure has one more circle than the one before it. Step 3: The next figure must have ${k+1} circles.`});
+for(const d of [90,-90])for(const a0 of [0,90,180,270])PZ.push({s:[0,1,2].map(i=>arrow(a0+d*i)),a:arrow(a0+3*d),w:[0,1,2].map(i=>arrow(a0+d*i)),sol:`Step 1: Look at the direction of the triangle's tip in each figure. Step 2: It turns 90 degrees ${dn(d)} every step. Step 3: Turn it 90 degrees ${dn(d)} once more to get the answer.`});
+for(const d of [1,-1])for(const k0 of [0,1,2,3])PZ.push({s:[0,1,2].map(i=>quad(k0+d*i)),a:quad(k0+3*d),w:[0,1,2].map(i=>quad(k0+d*i)),sol:`Step 1: Find the shaded quarter of the circle in each figure. Step 2: It moves one quarter ${dn(d)} each step. Step 3: Move it one more quarter ${dn(d)} to get the next figure.`});
+for(let j=0;j<5;j++){const ks=Object.keys(SH),cy=sf(ks).slice(0,3),f=j%2;PZ.push({s:[0,1,2,3,4].map(i=>shp(cy[i%3],f)),a:shp(cy[2],f),w:[shp(cy[0],f),shp(cy[1],f),shp(ks.find(k=>!cy.includes(k)),f)],sol:`Step 1: Name the shapes in order: ${cy.join(", ")}, then they repeat. Step 2: The pattern is a cycle of three shapes. Step 3: The sixth figure is the third shape of the cycle, the ${cy[2]}.`})}
+for(const st of [1,2])PZ.push({s:[0,1,2].map(i=>grid(st+i)),a:grid(st+3),w:[grid(st+4),grid(st+2),grid(st+3,1)],sol:`Step 1: Count the shaded squares: ${st}, ${st+1}, ${st+2}. Step 2: One more square is shaded each step, filling from the top left across each row. Step 3: The next figure has ${st+3} shaded squares.`});
+for(const sp of [2,3,4])PZ.push({s:[0,1,2].map(i=>big(6+sp*i)),a:big(6+3*sp),w:[big(6+4*sp),big(6+2*sp),big(5+3*sp)],sol:`Step 1: Compare the sizes of the circles. Step 2: The circle grows by the same amount each step. Step 3: Add that growth once more to find the next circle.`});
+for(const sh of ["square","circle","triangle"])for(const st of [1,0]){const n=(5+st)%2,o=sh=="square"?"circle":sh=="circle"?"triangle":"square";PZ.push({s:[0,1,2,3,4].map(i=>shp(sh,(i+st)%2)),a:shp(sh,n),w:[shp(sh,1-n),shp(o,n),shp(o,1-n)],sol:`Step 1: Notice that the figure alternates between ${n?"empty and filled":"filled and empty"}. Step 2: The shape itself never changes. Step 3: The sixth figure is ${n?"filled":"empty"}.`})}
+for(const d of [1,-1])for(const p0 of [0,1,2,3])PZ.push({s:[0,1,2].map(i=>pos(p0+d*i)),a:pos(p0+3*d),w:[0,1,2].map(i=>pos(p0+d*i)),sol:`Step 1: Track the dot's corner in each box. Step 2: It moves one corner ${dn(d)} each step. Step 3: Move it one more corner ${dn(d)} to get the answer.`});
+window.FIG={S,C,dots,arrow,quad,SH,shp,grid,big,pos,QM};PZ.forEach((p,n)=>{const o=[p.a,...p.w];if(new Set(o).size!==4)return;BANK.push(["Analytical Ability \u00b7 Symbolic Logic / Abstract Reasoning",`Abstract Reasoning ${n+1}. Which figure comes next in the sequence?`,o,p.sol,p.s.join("")+QM])});
+})();
+// ---- more questions (verbal, numerical, analytical, general information)
+(()=>{
+let sd=9001;const R=()=>(sd=(sd*1103515245+12345)%2147483648)/2147483648,ri=(a,b)=>a+Math.floor(R()*(b-a+1)),pk=a=>a[Math.floor(R()*a.length)],sf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(R()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const seen=new Set(BANK.map(b=>b[1])),oth=(a,x,n)=>sf(a.filter(y=>y!==x)).slice(0,n),cap=s=>s[0].toUpperCase()+s.slice(1),L2=s=>s.trim().split("\n").map(l=>l.trim().split("|")),gcd=(a,b)=>b?gcd(b,a%b):a;
+const add=(c,q,a,wr,sol,fig,d)=>{if(seen.has(q))return;const w=[...new Set(wr.map(String))].filter(x=>x!==String(a)).slice(0,3);if(w.length<3)return;seen.add(q);const r=[c,q,[String(a),...w],sol];if(fig)r.push(fig);if(d!=null)r.d=d;BANK.push(r)};
+const V="Verbal Ability \u00b7 ",N="Numerical Ability \u00b7 ",A="Analytical Ability \u00b7 ",G="General Information \u00b7 ",peso=n=>"\u20b1"+n.toLocaleString("en-US");
+const num=(c,q,a,sol,f=x=>x,d)=>{const st=Math.max(1,Math.round(a/10)),w=[];for(const x of [a+st,a-st,a+2*st,a*2,a-2*st,a+3*st,Math.round(a/2)])if(x!==a&&x>0&&!w.includes(x))w.push(x);add(c,q,f(a),w.slice(0,3).map(f),sol,0,d)};
+// ===== VERBAL
+const SCL=L2(`impartial|The judge remained ___ and favored neither side.
+diligent|A ___ employee finishes every task without being reminded.
+reluctant|He was ___ to sign the document before reading it.
+abundant|Rice is ___ in the province, so prices stay low.
+scarce|Clean water became ___ during the long drought.
+candid|Please give me your ___ opinion, even if it is critical.
+prudent|It is ___ to save money for emergencies.
+obsolete|The old typewriter is now ___ in most offices.
+meticulous|The auditor was ___ and checked every figure twice.
+lenient|The teacher was ___ and gave students extra time.
+vague|His instructions were so ___ that nobody knew what to do.
+negligent|The ___ guard left the gate unlocked.
+eloquent|The mayor gave an ___ speech that moved the crowd.
+futile|All efforts to save the old bridge were ___.
+hinder|Heavy traffic can ___ the delivery of supplies.
+transparent|A ___ government shows its records to the public.
+frugal|A ___ family spends money wisely and avoids waste.
+ambiguous|The ___ memo could be read in two different ways.
+tenacious|The ___ athlete kept training despite many failures.
+integrity|A civil servant must act with ___ at all times.`);
+SCL.forEach(([w,s])=>add(V+"Sentence Completion",s,cap(w),oth(SCL.map(x=>cap(x[0])),w,4).map(String),`Step 1: Read the whole sentence and find the clue. Step 2: Predict the kind of word that is missing. Step 3: Choose ${cap(w)}, because it fits the meaning of the sentence best.`));
+const HS=["report","file","memo","application","schedule"],PP=["of the committee","from the office","for the new employees","on the table","in the cabinet"],TL=["ready for review","still incomplete","already approved","very useful"];
+for(let n=0;n<44;n++){const pl=n%2,h=pk(HS)+(pl?"s":""),pp=pk(PP),pa=n%4<2,ok=pl?(pa?"are":"were"):(pa?"is":"was"),bad=pl?(pa?"is":"was"):(pa?"are":"were");
+add(V+"Error Recognition",`Fill in the blank: The ${h} ${pp} ___ ${pk(TL)}.`,ok,[bad,"be","been"],`Step 1: Find the subject. It is "${h}", not the words "${pp}". Step 2: "${h}" is ${pl?"plural":"singular"}. Step 3: Use the ${pa?"present":"past"} form that agrees with it: ${ok}.`,0,1)}
+const SP=L2(`Accommodate|Accomodate
+Necessary|Neccessary
+Occurrence|Occurence
+Receive|Recieve
+Definitely|Definately
+Privilege|Priviledge
+Embarrass|Embarass
+Environment|Enviroment
+Government|Goverment
+Maintenance|Maintainance
+Calendar|Calender
+Conscience|Concience
+Committee|Comittee
+Experience|Experiance
+Independent|Independant
+Knowledge|Knowlege
+Successful|Succesful
+Unnecessary|Unneccessary
+Secretary|Secretery
+Beginning|Begining
+Achievement|Acheivement
+Believe|Beleive`);
+const mut=(w,k)=>{const a=w.split("");const i=2+k;[a[i],a[i+1]]=[a[i+1],a[i]];return a.join("")};
+SP.forEach(([r,w])=>add(V+"Error Recognition",`Choose the correct spelling: ${w.toLowerCase()}?`,r,[w,mut(r,1),mut(r,2),mut(r,3)],`Step 1: Compare the choices letter by letter. Step 2: The correct spelling is ${r}. Step 3: A common mistake is ${w}. Practice writing ${r} three times to remember it.`,0,0));
+const PO=L2(`First, get an application form from the office.|Next, fill it out and attach the requirements.|Finally, submit it to the receiving clerk.
+First, boil the water in a pot.|Next, add the noodles and cook for three minutes.|Finally, drain the water and add the seasoning.
+First, the typhoon formed over the Pacific Ocean.|Next, it moved toward the northern provinces.|Finally, it made landfall and caused heavy flooding.
+First, the clerk receives the document.|Next, the supervisor reviews and signs it.|Finally, the records officer files it.
+First, identify the problem clearly.|Next, list possible solutions.|Finally, choose the best solution and act on it.
+First, the students lined up outside the room.|Next, the proctor checked their identification.|Finally, the exam papers were distributed.
+First, the seed is planted in the soil.|Next, it is watered every day.|Finally, a small plant grows from it.
+First, prepare a budget for the month.|Next, record every expense.|Finally, compare spending with the budget.
+First, the fire alarm sounded in the building.|Next, everyone walked calmly to the exits.|Finally, the staff gathered at the assembly area.
+First, the office received many complaints.|Next, a team investigated the cause.|Finally, the manager approved a new policy.`);
+const PERMS=[[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]];
+PO.forEach((s,i)=>[PERMS[i%5],PERMS[(i+2)%5]].forEach(p=>{const ord=[0,1,2].map(k=>p.indexOf(k)+1).join("-"),all=PERMS.map(q=>[0,1,2].map(k=>q.indexOf(k)+1).join("-")).concat(["1-2-3"]);
+add(V+"Paragraph Organization",`Arrange in logical order: ${p.map((k,j)=>`(${j+1}) ${s[k]}`).join(" ")}`,ord,all.filter(x=>x!==ord),`Step 1: Find the signal words: "${s[0].split(",")[0]}", "${s[1].split(",")[0]}", "${s[2].split(",")[0]}". Step 2: They show the order: first, next, finally. Step 3: Write the numbers in that order: ${ord}.`,0,2)}));
+// ===== NUMERICAL
+for(let n=0;n<16;n++){const a=ri(2,9),b=ri(2,9),c=ri(2,9),d=ri(1,9);num(N+"Basic Operations",`Evaluate: ${a} + ${b} \u00d7 ${c} \u2212 ${d}`,a+b*c-d,`Step 1: Multiply first (PEMDAS): ${b} \u00d7 ${c} = ${b*c}. Step 2: Add and subtract from left to right: ${a} + ${b*c} = ${a+b*c}. Step 3: ${a+b*c} \u2212 ${d} = ${a+b*c-d}.`,x=>x,1)}
+for(let n=0;n<16;n++){const q=pk([2,3,4,5,6]),s=pk([2,3,4,5,6]),a=ri(1,q-1),c=ri(1,s-1);if(q===s)continue;const nu=a*s+c*q,de=q*s,g=gcd(nu,de),r=`${nu/g}/${de/g}`;
+add(N+"Basic Operations",`${a}/${q} + ${c}/${s} = ?`,r,[`${a+c}/${q+s}`,`${a*c}/${q*s}`,`${nu+1}/${de}`,`${nu/g+1}/${de/g}`],`Step 1: Find a common denominator: ${q} \u00d7 ${s} = ${de}. Step 2: Rewrite: ${a*s}/${de} + ${c*q}/${de} = ${nu}/${de}. Step 3: Reduce to lowest terms: ${r}.`,0,1)}
+for(let n=0;n<12;n++){const X=20*ri(2,40),p=pk([10,20,25,50]),Y=X*(100+p)/100;add(N+"Word Problems",`The price of an item rose from ${peso(X)} to ${peso(Y)}. What is the percent increase?`,p+"%",[10,20,25,50,5,40].filter(x=>x!==p).map(x=>x+"%"),`Step 1: Find the increase: ${Y} \u2212 ${X} = ${Y-X}. Step 2: Divide by the original price: ${Y-X} \u00f7 ${X} = ${(Y-X)/X}. Step 3: Multiply by 100 to get ${p}%.`,0,1)}
+for(let n=0;n<16;n++){const l=ri(4,25),w=ri(2,l-1),ar=n%2;num(N+"Word Problems",ar?`A rectangle is ${l} cm long and ${w} cm wide. What is its perimeter (cm)?`:`A rectangle is ${l} cm long and ${w} cm wide. What is its area (square cm)?`,ar?2*(l+w):l*w,ar?`Step 1: Perimeter = 2 \u00d7 (length + width). Step 2: 2 \u00d7 (${l} + ${w}) = ${2*(l+w)} cm.`:`Step 1: Area = length \u00d7 width. Step 2: ${l} \u00d7 ${w} = ${l*w} square cm.`,x=>x,0)}
+for(let n=0;n<16;n++){const a=pk([6,8,9,10,12,15,18,20,24]),b=pk([4,6,8,9,12,14,16,21,30]),g=gcd(a,b),w=n%2;if(a===b)continue;num(N+"Basic Operations",w?`What is the least common multiple (LCM) of ${a} and ${b}?`:`What is the greatest common factor (GCF) of ${a} and ${b}?`,w?a*b/g:g,w?`Step 1: Find the GCF of ${a} and ${b}: ${g}. Step 2: LCM = (${a} \u00d7 ${b}) \u00f7 GCF = ${a*b} \u00f7 ${g} = ${a*b/g}.`:`Step 1: List the factors of ${a} and ${b}. Step 2: The largest factor they share is ${g}.`,x=>x,1)}
+for(let n=0;n<14;n++){const s=ri(5,15),k=ri(2,5),S=s*(k+1);num(N+"Word Problems",`The sum of the ages of a mother and her son is ${S}. The mother is ${k} times as old as her son. How old is the son?`,s,`Step 1: Let the son's age be x. The mother is ${k}x. Step 2: x + ${k}x = ${S}, so ${k+1}x = ${S}. Step 3: x = ${S} \u00f7 ${k+1} = ${s}.`,x=>x,2)}
+for(let n=0;n<14;n++){const X=100*ri(2,40),[d1,d2]=pk([[10,10],[20,10],[20,20],[25,20]]),r=X*(100-d1)*(100-d2)/10000;num(N+"Word Problems",`An item costs ${peso(X)}. It is discounted ${d1}%, and the sale price gets another ${d2}% discount. What is the final price?`,r,`Step 1: First discount: ${X} \u00d7 ${(100-d1)/100} = ${X*(100-d1)/100}. Step 2: Second discount on that price: ${X*(100-d1)/100} \u00d7 ${(100-d2)/100} = ${r}. Note: the discounts are not added together.`,peso,2)}
+for(let n=0;n<14;n++){const u=ri(3,15),a=ri(2,6),b=a*ri(2,5);num(N+"Word Problems",`If ${a} notebooks cost ${peso(u*a)}, how much do ${b} notebooks cost?`,u*b,`Step 1: Find the price of one notebook: ${u*a} \u00f7 ${a} = ${u}. Step 2: Multiply by ${b}: ${u} \u00d7 ${b} = ${u*b}.`,peso,0)}
+// ===== ANALYTICAL
+const AL="Analytical Ability \u00b7 ",{S,dots,arrow,quad,SH,shp,grid,big,pos,QM}=window.FIG,LT="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+for(let n=0;n<24;n++){const s0=ri(0,5),d=ri(1,4),sq=[0,1,2,3].map(i=>LT[s0+d*i]),an=LT[s0+4*d];add(A+"Symbolic Logic / Abstract Reasoning",`Next letter: ${sq.join(", ")}, ?`,an,[LT[s0+4*d+1],LT[s0+4*d-1],LT[s0+4*d+2],LT[s0+3*d]],`Step 1: Change each letter to its place in the alphabet: ${sq.map(x=>LT.indexOf(x)+1).join(", ")}. Step 2: The gap is +${d} each time. Step 3: ${LT.indexOf(sq[3])+1} + ${d} = ${LT.indexOf(an)+1}, which is ${an}.`,0,0)}
+const NM=["Ana","Ben","Carl","Dina","Eli","Faye"];
+for(let n=0;n<24;n++){const p=sf(NM).slice(0,4),t=n%3,[a,b,c,d]=p,ch=`${a} is taller than ${b}. ${b} is taller than ${c}. ${c} is taller than ${d}.`;
+add(A+"Identifying Assumptions & Drawing Conclusions",ch+" "+(t==0?"Who is the tallest?":t==1?"Who is the shortest?":"Who is the second tallest?")+(n>=3?` (Set ${n+1})`:""),t==0?a:t==1?d:b,p.filter(x=>x!==(t==0?a:t==1?d:b)),`Step 1: Line the names up from tallest to shortest: ${a} > ${b} > ${c} > ${d}. Step 2: ${t==0?"The first name is the tallest":t==1?"The last name is the shortest":"The second name is the second tallest"}.`,0,1)}
+["CAB","BAD","FACE","DEAF","BEAD","CODE","FADE","HEAD","DIG","HIDE","JADE","LACE"].forEach(w=>{const v=w.split("").map(c=>LT.indexOf(c)+1),s=v.reduce((p,c)=>p+c,0);num(AL+"Symbolic Logic / Abstract Reasoning",`If A=1, B=2, C=3 and so on, what is the sum of the letter values of ${w}?`,s,`Step 1: Give each letter its value: ${w.split("").map((c,i)=>c+"="+v[i]).join(", ")}. Step 2: Add them: ${v.join(" + ")} = ${s}.`,x=>x,1)});
+for(let h=1;h<=11;h++){const a=Math.min(30*h,360-30*h);add(AL+"Symbolic Logic / Abstract Reasoning",`What is the smaller angle between the clock hands at ${h}:00?`,a+"\u00b0",[30,60,90,120,150,180].filter(x=>x!==a).map(x=>x+"\u00b0"),`Step 1: The clock has 12 hours, so each hour mark is 360 \u00f7 12 = 30 degrees. Step 2: At ${h}:00 the hands are ${h} hours apart: ${h} \u00d7 30 = ${30*h} degrees. Step 3: Use the smaller angle: ${a} degrees.`,0,1)}
+const ks=Object.keys(SH),poly=n=>S(`<polygon points='${Array.from({length:n},(_,i)=>{const t=(-90+360*i/n)*Math.PI/180;return (30+22*Math.cos(t)).toFixed(1)+","+(30+22*Math.sin(t)).toFixed(1)}).join(" ")}'/>`);
+[[3,3],[4,3],[3,4],[5,3]].forEach(([s0,k],n)=>add(AL+"Symbolic Logic / Abstract Reasoning",`Abstract Reasoning (Polygons) ${n+1}. Which figure comes next in the sequence?`,poly(s0+k),[poly(s0+k+1),poly(s0+k-1),poly(s0+k+2)],`Step 1: Count the sides of each figure: ${Array.from({length:k},(_,i)=>s0+i).join(", ")}. Step 2: Each figure has one more side than the one before. Step 3: The next figure has ${s0+k} sides.`,Array.from({length:k},(_,i)=>poly(s0+i)).join("")+QM,0));
+for(let n=0;n<14;n++){const cy=sf(ks).slice(0,3),an=shp(cy[2],1);add(AL+"Symbolic Logic / Abstract Reasoning",`Abstract Reasoning (Two Rules) ${n+1}. Which figure comes next in the sequence?`,an,[shp(cy[2],0),shp(cy[0],1),shp(cy[1],0)],`Step 1: There are two rules working together. Rule A: the shapes repeat in a cycle of three (${cy.join(", ")}). Rule B: the fill alternates between filled and empty. Step 2: The sixth figure is the third shape (${cy[2]}) and, being even-numbered in the alternation, it is filled.`,[0,1,2,3,4].map(i=>shp(cy[i%3],i%2)).join("")+QM,2)}
+for(let n=0;n<24;n++){const t=n%3;let o,ans,sol;
+if(t==0){const f=sf(ks).slice(0,4);ans=shp(f[3],0);o=[ans,shp(f[0],1),shp(f[1],1),shp(f[2],1)];sol="Step 1: Look at the fill of each figure. Step 2: Three figures are filled in. Step 3: Only one figure is empty, so it does not belong."}
+else if(t==1){const f=sf(["square","triangle","diamond","cross"]).slice(0,3);ans=shp("circle",0);o=[ans,...f.map(k=>shp(k,0))];sol="Step 1: Look at the outline of each figure. Step 2: Three figures have straight edges and corners. Step 3: The circle has no corners, so it does not belong."}
+else{const ev=n%2,e=sf([2,4,6]),od=sf([3,5]);ans=dots(ev?od[0]:e[0]);o=[ans,...(ev?e:od.concat([e[0]])).slice(0,3).map(dots)];sol=ev?"Step 1: Count the circles in each figure. Step 2: Three figures have an even number of circles (2, 4, 6). Step 3: The odd number is the one that does not belong.":"Step 1: Count the circles in each figure. Step 2: Three figures have an odd number of circles. Step 3: The even number is the one that does not belong."}
+add(AL+"Symbolic Logic / Abstract Reasoning",`Abstract Reasoning (Odd One Out) ${n+1}. Which figure does not belong with the others?`,o[0],o.slice(1),sol,0,1)}
+// ===== GENERAL INFORMATION
+const AR=L2(`I|National Territory
+II|Declaration of Principles and State Policies
+III|Bill of Rights
+IV|Citizenship
+V|Suffrage
+VI|Legislative Department
+VII|Executive Department
+VIII|Judicial Department
+IX|Constitutional Commissions
+X|Local Government
+XI|Accountability of Public Officers
+XII|National Economy and Patrimony
+XIII|Social Justice and Human Rights
+XIV|Education, Science and Technology, Arts, Culture and Sports
+XV|The Family
+XVI|General Provisions
+XVII|Amendments or Revisions
+XVIII|Transitory Provisions`),GC=G+"Philippine Constitution",tp="Memory tip: the articles follow the order of government: territory, principles, rights, citizenship, suffrage, then the three branches (VI, VII, VIII).";
+AR.forEach(([r,t])=>{add(GC,`Article ${r} of the 1987 Constitution is about:`,t,oth(AR.map(x=>x[1]),t,4),`Step 1: Recall the order of the articles. Step 2: Article ${r} covers ${t}. ${tp}`,0,1);add(GC,`Which Article of the 1987 Constitution covers ${t}?`,"Article "+r,oth(AR.map(x=>"Article "+x[0]),"Article "+r,4),`Step 1: Match the topic ${t} to its article number. Step 2: It is Article ${r}. ${tp}`,0,1)});
+const NR=L2(`Commitment to public interest|Public officials put the interest of the public above their personal interest.
+Professionalism|Public officials perform their duties with excellence, intelligence and skill.
+Justness and sincerity|Public officials act with fairness and honesty and do not discriminate.
+Political neutrality|Public officials serve everyone, regardless of party affiliation.
+Responsiveness to the public|Public officials give prompt, courteous and adequate service.
+Nationalism and patriotism|Public officials are loyal to the Philippines and promote its interest.
+Commitment to democracy|Public officials uphold the Constitution and the democratic way of life.
+Simple living|Public officials lead modest lives and avoid ostentation.`);
+NR.forEach(([n,d])=>add(G+"R.A. No. 6713",`Which norm of conduct under RA 6713 is described? ${d}`,n,oth(NR.map(x=>x[0]),n,4),`Step 1: Read the description carefully. Step 2: Match it to the matching norm: ${n}. Remember that RA 6713 lists eight norms of conduct.`,0,1));
+const TM=L2(`the President|six years, with no reelection|40
+the Vice President|six years, up to two successive terms|40
+a Senator|six years, up to two consecutive terms|35
+a Member of the House of Representatives|three years, up to three consecutive terms|25
+an Associate Justice of the Supreme Court|until age 70 or incapacity|40`);
+TM.forEach(([o,t,a])=>{add(GC,`The minimum age to be ${o} of the Philippines is:`,a,["25","30","35","40","45"].filter(x=>x!==a),`Step 1: Recall the qualifications in the Constitution. Step 2: ${cap(o)} must be at least ${a} years old.`,0,1);add(GC,`The term of ${o} is:`,t,oth(TM.map(x=>x[1]),t,4),`Step 1: Recall the term limits. Step 2: The term of ${o} is ${t}.`,0,1)});
+const SY=L2(`flower|Sampaguita|Narra|Mango|Carabao
+tree|Narra|Sampaguita|Acacia|Mango
+fruit|Mango|Banana|Pineapple|Durian
+animal|Carabao|Tamaraw|Philippine eagle|Horse
+bird|Philippine eagle|Maya|Parrot|Kingfisher
+sport|Arnis|Basketball|Sipa|Boxing
+dance|Tinikling|Cariñosa|Pandanggo|Singkil
+hero|Jose Rizal|Andres Bonifacio|Emilio Aguinaldo|Apolinario Mabini`);
+SY.forEach(([k,a,...w])=>add(G+"Other Laws & History",`The national ${k} of the Philippines is the:`,a,w,`The national ${k} of the Philippines is ${a}. Memorize the national symbols as a group.`,0,0));
+const FC=L2(`The Philippines has how many islands?|7,641|7,107|7,500|7,840|The official count is 7,641 islands.
+Who founded the Katipunan?|Andres Bonifacio|Emilio Aguinaldo|Jose Rizal|Apolinario Mabini|Andres Bonifacio founded the Katipunan in 1892.
+In what year was Jose Rizal executed?|1896|1892|1898|1901|Rizal was executed at Bagumbayan on December 30, 1896.
+Who defeated Magellan at the Battle of Mactan?|Lapulapu|Humabon|Sultan Kudarat|Dagohoy|Lapulapu and his warriors won in 1521.
+The Treaty of Paris that ended the Spanish-American War was signed in:|1898|1896|1902|1935|The treaty transferred the Philippines from Spain to the United States.
+The Commonwealth of the Philippines was established in:|1935|1898|1946|1941|Manuel Quezon became its first president.
+The Philippines gained independence from the United States in:|1946|1935|1945|1941|Independence was recognized on July 4, 1946.
+The People Power Revolution at EDSA took place in:|1986|1972|1983|1992|It ended the Marcos rule in February 1986.
+The 1987 Constitution was ratified on:|February 2, 1987|February 25, 1986|June 12, 1987|January 17, 1973|It was ratified in a plebiscite on February 2, 1987.
+Martial law was declared by Ferdinand Marcos in:|1972|1965|1981|1986|Proclamation No. 1081 was signed in September 1972.
+The largest lake in the Philippines is:|Laguna de Bay|Lake Lanao|Taal Lake|Lake Buluan|Laguna de Bay is the largest lake.
+Which volcano is known for its near-perfect cone shape?|Mayon Volcano|Taal Volcano|Mount Pinatubo|Mount Kanlaon|Mayon in Albay has a near-perfect cone.
+Mount Pinatubo erupted violently in:|1991|1981|2001|1975|The eruption happened in June 1991.
+The deepest trench near the Philippines is the:|Philippine Trench|Manila Trench|Cotabato Trench|Sulu Trench|The Philippine Trench lies east of the archipelago.
+How many regions does the Philippines have?|17|16|18|15|The Philippines is divided into 17 regions.
+The Philippines was a founding member of ASEAN in:|1967|1945|1975|1992|ASEAN was founded on August 8, 1967.
+Philippine Standard Time is ahead of UTC by:|8 hours|7 hours|9 hours|6 hours|Philippine time is UTC+8.
+The Supreme Court is headed by the:|Chief Justice|Senate President|Ombudsman|Secretary of Justice|The Chief Justice heads the Supreme Court.
+The head of the Executive Department is the:|President|Chief Justice|Senate President|Speaker of the House|The President heads the executive branch.
+EO 292 is also known as the:|Administrative Code of 1987|Local Government Code|Labor Code|Revised Penal Code|EO 292 is the Administrative Code of 1987.
+Civil service appointments are made according to:|Merit and fitness|Political affiliation|Seniority only|Personal recommendation|Article IX-B requires appointments by merit and fitness.
+Positions in the career service enjoy:|Security of tenure|Fixed contract terms|No benefits|Political appointment|Career service positions have security of tenure.
+Civil service employees may be removed only:|For cause provided by law|At the will of the President|By the agency head alone|For any reason|Article IX-B protects employees from removal without legal cause.
+The passing rate of the Civil Service Examination is:|80%|75%|70%|85%|Both professional and sub-professional levels require 80%.`);
+FC.forEach(([q,a,...r])=>{const e=r.pop();add(/Civil service|career service|merit/i.test(q)?GC:G+"Other Laws & History",q,a,r,e+" Study this fact together with similar ones.",0,/Civil|career|EO/.test(q)?1:0)});
+})();
+// ---- psychometric-style abstract reasoning (series, analogy, grid)
+(()=>{
+let sd=31337;const R=()=>(sd=(sd*1103515245+12345)%2147483648)/2147483648,pk=a=>a[Math.floor(R()*a.length)],sf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(R()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const {S,C,SH,shp,QM}=window.FIG,CAT="Analytical Ability \u00b7 Symbolic Logic / Abstract Reasoning",seen=new Set(BANK.map(b=>b[1])),F=f=>f?" fill='#111'":"";
+const put=(q,o,sol,row,d)=>{if(seen.has(q)||new Set(o).size!==4)return;seen.add(q);const r=[CAT,q,o,sol,row];r.d=d;BANK.push(r)};
+const sp=t=>`<span style='align-self:center;font-size:.8rem;color:#8795ab'>${t}</span>`,md=k=>(k%4+4)%4,dn=d=>d>0?"clockwise":"counterclockwise";
+const BOX="<rect x='4' y='4' width='52' height='52'/>";
+const HB=["<rect x='4' y='4' width='52' height='26'","<rect x='30' y='4' width='26' height='52'","<rect x='4' y='30' width='52' height='26'","<rect x='4' y='4' width='26' height='52'"].map(s=>s+" fill='#111'/>");
+const hb=k=>S(BOX+HB[md(k)]);
+const CT=["M4 4H34L4 34Z","M56 4V34L26 4Z","M56 56H26L56 26Z","M4 56V26L34 56Z"],ct=k=>S(BOX+`<path d='${CT[md(k)]}' fill='#111'/>`);
+const g3=on=>S(Array.from({length:9},(_,i)=>`<rect x='${6+(i%3)*16}' y='${6+Math.floor(i/3)*16}' width='16' height='16'${F(on.includes(i))}/>`).join(""));
+const nest=(n,f)=>S(Array.from({length:n},(_,i)=>`<rect x='${4+i*8}' y='${4+i*8}' width='${52-i*16}' height='${52-i*16}'${i==n-1&&f?" fill='#111'":""}/>`).join(""));
+let n1=0;const ser=(fn,seq,ans,wr,sol,d)=>put(`Abstract Reasoning (Series) ${++n1}. Which figure completes the series?`,[ans,...wr],sol,seq.map(fn).join("")+QM,d);
+for(const [fn,nm,what] of [[hb,"half","black half of the square"],[ct,"corner","black triangle"]])for(const d of [1,-1])for(let k0=0;k0<4;k0++)put(`Abstract Reasoning (Series) ${++n1}. Which figure completes the series?`,[3,0,1,2].map(i=>fn(k0+d*i)).map((x,i,a)=>x),`Step 1: Find the ${what} in each figure. Step 2: It moves one quarter turn ${dn(d)} each step. Step 3: Move it one more quarter turn ${dn(d)} to get the next figure.`,[0,1,2].map(i=>fn(k0+d*i)).join("")+QM,1);
+for(const s of [1,2,4])for(const i0 of [0,1,2])for(const two of [0,1]){const at=j=>{const a=(i0+s*j)%9;return two?[a,(a+4)%9]:[a]},j3=at(3);ser(g3,[at(0),at(1),at(2)],g3(j3),[g3(j3.map(v=>(v+1)%9)),g3(j3.map(v=>(v+8)%9)),g3(j3.map(v=>(v+2)%9))].map(String),`Step 1: Find the position of the black square${two?"s":""} in each figure. Step 2: ${two?"Each one":"It"} moves ${s} square${s>1?"s":""} forward along the rows each step (left to right, then to the next row, wrapping back to the start). Step 3: Move ${two?"them":"it"} ${s} more square${s>1?"s":""} to find the answer.`,two?2:1)}
+for(const [a,b,c,f] of [[4,3,2,0],[1,2,3,0],[4,3,2,1],[1,2,3,1]]){const an=a+(b-a)*3-(b-a)*0;const nx=a<b?4:1;ser(x=>nest(x,f),[a,b,c],nest(nx,f),[2,3,1,4].filter(x=>x!==nx&&x!==c).concat([c]).map(x=>nest(x,f)),`Step 1: Count the squares in each figure: ${a}, ${b}, ${c}. Step 2: One ${a<b?"more":"fewer"} square appears each step. Step 3: The next figure has ${nx} square${nx>1?"s":""}.`,0)}
+// analogy
+const PT=[[14,14],[30,14],[46,14],[14,30],[46,30],[14,46],[30,46],[46,46]],dr=s=>S("<rect x='4' y='4' width='52' height='52' stroke-width='1'/>"+`<rect x='${s.a[0]-6}' y='${s.a[1]-6}' width='12' height='12'${F(s.fa)}/>`+C(s.b[0],s.b[1],6,s.fb));
+const TR={"turns 90 degrees clockwise":([x,y])=>[60-y,x],"turns 90 degrees counterclockwise":([x,y])=>[y,60-x],"is flipped left to right like a mirror":([x,y])=>[60-x,y],"is flipped upside down":([x,y])=>[x,60-y],"turns 180 degrees (a half turn)":([x,y])=>[60-x,60-y]};
+const ap=(t,s)=>t==="inv"?{a:s.a,b:s.b,fa:1-s.fa,fb:1-s.fb}:{a:TR[t](s.a),b:TR[t](s.b),fa:s.fa,fb:s.fb},TK=[...Object.keys(TR),"inv"];
+let n2=0;for(const t of TK)for(let v=0;v<4;v++){const mk=()=>{const [p,q]=sf(PT).slice(0,2),f=pk([0,1]);return {a:p,b:q,fa:f,fb:1-f}},s0=mk(),s1=mk(),B=ap(t,s0),an=ap(t,s1),ans=dr(an),wr=[...new Set([dr(s1),...TK.filter(x=>x!==t).map(x=>dr(ap(x,s1)))])].filter(x=>x!==ans);
+put(`Abstract Reasoning (Analogy) ${++n2}. Which figure completes the statement?`,[ans,...wr.slice(0,3)],`Step 1: Compare the first two figures. The first figure ${t==="inv"?"swaps its colors: black becomes white and white becomes black":t}. Step 2: Apply the same change to the third figure. Step 3: The correct answer shows the third figure after that change.`,dr(s0)+sp("is to")+dr(B)+sp("as")+dr(s1)+sp("is to")+QM,2)}
+// dice dominoes
+const PIP={1:[[0,0]],2:[[-1,-1],[1,1]],3:[[-1,-1],[0,0],[1,1]],4:[[-1,-1],[1,-1],[-1,1],[1,1]],5:[[-1,-1],[1,-1],[0,0],[-1,1],[1,1]],6:[[-1,-1],[1,-1],[-1,0],[1,0],[-1,1],[1,1]]},pp=(n,cx,cy)=>PIP[n].map(([x,y])=>C(cx+x*9,cy+y*7,2.6,1)).join(""),dom=(a,b)=>S(BOX+"<line x1='4' y1='30' x2='56' y2='30'/>"+pp(a,30,17)+pp(b,30,43));
+let n3=0;for(const ts of [1,-1])for(const bs of [1,-1])for(const j of [0,1])for(const k of [0,1]){const a0=ts>0?1+j:6-j,b0=bs>0?1+k:6-k,A=a0+3*ts,B=b0+3*bs;
+put(`Abstract Reasoning (Dice) ${++n3}. Which figure is next in the series?`,[dom(A,B),dom(A,b0+2*bs),dom(a0+2*ts,B),dom(B,A)],`Step 1: Watch the top dice: it ${ts>0?"gains":"loses"} one dot each step. Step 2: Watch the bottom dice: it ${bs>0?"gains":"loses"} one dot each step. Step 3: Apply both rules once more: the top shows ${A} and the bottom shows ${B}.`,[0,1,2].map(i=>dom(a0+i*ts,b0+i*bs)).join("")+QM,2)}
+// latin grid
+const ks=Object.keys(SH),lat=(p,r0,c0)=>S(Array.from({length:9},(_,i)=>{const r=Math.floor(i/3),c=i%3,x=6+c*16,y=6+r*16;return `<rect x='${x}' y='${y}' width='16' height='16'/>`+(r==r0&&c==c0?`<text x='${x+8}' y='${y+13}' font-size='13' text-anchor='middle' fill='#111' stroke='none'>?</text>`:`<g transform='translate(${x+8-6.6} ${y+8-6.6}) scale(.22)' stroke-width='7'>${SH[p[(r+c)%3]](1)}</g>`)}).join(""));
+for(let n=0;n<12;n++){const p=sf(ks).slice(0,3),r0=n%3,c0=Math.floor(n/3)%3,ans=p[(r0+c0)%3],ex=ks.find(x=>!p.includes(x));
+put(`Abstract Reasoning (Grid) ${n+1}. Which figure completes the grid?`,[shp(ans,1),...p.filter(x=>x!==ans).map(x=>shp(x,1)),shp(ex,1)],`Step 1: Each row and each column must contain every symbol exactly once. Step 2: Look at the row and the column of the empty cell and note which symbols are already there. Step 3: The symbol that is missing from both is the ${ans}.`,lat(p,r0,c0),1)}
+})();
+// ---- Identifying errors (original items on the topics in the Drive Verbal reviewer)
+(()=>{
+const IE=`The committee~have approved~the new policy~last week.|1|"Committee" is a singular group noun here, so use "has approved".
+Neither the manager~nor the clerks~was aware of~the schedule change.|2|With neither...nor, the verb agrees with the nearer subject, "clerks", so use "were aware of".
+Each of the employees~must submit~their~annual report.|2|"Each" is singular, so use "his or her".
+She is~more smarter~than her~younger brother.|1|This is a double comparative. Use "smarter".
+The teacher asked~the students to~be quiet and~listening carefully.|3|Keep parallel form: "be quiet and listen carefully".
+If I~would have known~about the delay, I~would have left earlier.|1|In the if-clause of a past condition, use "had known".
+The number of~applicants for the position~are increasing~every year.|2|"The number of" takes a singular verb: "is increasing".
+He runs~very quick~and wins~most races.|1|Use the adverb "quickly" to describe "runs".
+Between you and~I, the plan~is not~very practical.|0|After a preposition use the object pronoun: "between you and me".
+The news about~the typhoon~were broadcast~on every channel.|2|"News" is singular, so use "was broadcast".
+Having finished~the report, the manager~gave it~to she.|3|The object of "to" needs "her".
+The employees~who was~absent yesterday~must explain.|1|"Employees" is plural, so use "who were".
+This is~the most unique~design in~the whole exhibit.|1|"Unique" cannot be compared. Use "the most unusual" or "unique".
+Mathematics~are~my favorite~subject.|1|"Mathematics" is singular, so use "is".
+Neither of the~two proposals~are acceptable~to the board.|2|"Neither" is singular, so use "is acceptable".
+She not only~wrote the speech~but also deliver~it perfectly.|2|Keep parallel form: "wrote ... but also delivered".
+The principal, along with~two teachers,~are attending~the seminar.|2|The subject is "principal" (singular), so use "is attending".
+Everyone~in the office~have received~a memo.|2|"Everyone" is singular, so use "has received".
+I~have went~to the market~this morning.|1|Use the past participle: "have gone".
+The books~on the shelf~is~mine.|2|"Books" is plural, so use "are".
+Their~going to submit~the proposal~tomorrow.|0|Use "They're" (they are), not the possessive "Their".
+The dog wagged~it's tail~when it~saw its owner.|1|The possessive "its" has no apostrophe.
+The manager praised~both Ana~and I~for the project.|2|Use the object pronoun "me" after "praised".
+We were~so tired~that we could~hardly not stay awake.|3|This is a double negative. Use "hardly stay awake".
+The reason is~because he~forgot~his password.|0|Say "The reason is that" because "reason" and "because" repeat the same idea.
+Fewer~water is~needed in~the dry season.|0|Water cannot be counted, so use "Less".
+The report~lists several~criterias for~selecting winners.|2|"Criteria" is already plural.
+He did~good~on the exam~yesterday.|1|Use the adverb "well" to describe "did".
+She has~less friends~than her~sister does.|1|Friends can be counted, so use "fewer".
+Walking down~the street, the rain~began to fall~heavily.|1|This is a dangling modifier. The rain was not walking. Name the person who was walking.
+Please~lay down~and rest~for a while.|1|"Lay" needs an object. Use "lie down".`.split("\n").map(l=>{const [s,i,e]=l.split("|");return [s.split("~"),+i,e]});
+const seen=new Set(BANK.map(b=>b[1]));
+IE.forEach(([sg,i,e])=>{const q=`Identify the bracketed part that contains an error: ${sg.map(x=>`[${x}]`).join(" ")}`;if(seen.has(q)||new Set(sg).size!==4)return;seen.add(q);const r=["Verbal Ability \u00b7 Error Recognition",q,[sg[i],...sg.filter((_,k)=>k!==i)],`Step 1: Check each bracketed part for agreement, tense, pronoun case and parallel form. Step 2: The error is in "${sg[i]}". Step 3: ${e}`];r.d=1;BANK.push(r)});
+})();
+// ---- exam-style word analogies with five choices (A to E)
+(()=>{
+let sd=5150;const R=()=>(sd=(sd*1103515245+12345)%2147483648)/2147483648,sf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(R()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const seen=new Set(BANK.map(b=>b[1])),CATW="Analytical Ability \u00b7 Word Analogy";
+const GR=`develops into|Seed,Tree,Egg,Bird;Caterpillar,Butterfly,Tadpole,Frog;Acorn,Oak,Bud,Flower
+is the young of|Puppy,Dog,Kitten,Cat;Calf,Cow,Lamb,Sheep;Foal,Horse,Piglet,Pig;Chick,Hen,Cub,Bear
+is the opposite of|Hot,Cold,Day,Night;Up,Down,Rich,Poor;Expand,Contract,Ascend,Descend;Victory,Defeat,Success,Failure;Ancient,Modern,Generous,Selfish;Strong,Weak,Brave,Cowardly
+means the same as|Big,Large,Happy,Joyful;Begin,Start,Rapid,Quick;Silent,Quiet,Glad,Pleased;Smart,Intelligent,Tired,Weary;Scarce,Rare,Abundant,Plentiful
+is used to|Needle,Sew,Broom,Sweep;Key,Unlock,Thermometer,Measure;Telescope,Observe,Spade,Dig
+works in|Judge,Courtroom,Pilot,Cockpit;Farmer,Farm,Fisherman,Sea;Baker,Bakery,Librarian,Library;Chef,Kitchen,Mechanic,Garage
+is part of|Wheel,Car,Wing,Airplane;Finger,Hand,Toe,Foot;Chapter,Book,Scene,Play
+makes|Baker,Bread,Carpenter,Furniture;Poet,Poem,Painter,Painting;Bee,Honey,Cow,Milk;Architect,Building,Tailor,Clothes;Sculptor,Statue,Weaver,Cloth
+is a kind of|Rose,Flower,Oak,Tree;Eagle,Bird,Whale,Mammal;Piano,Instrument,Chair,Furniture;Apple,Fruit,Carrot,Vegetable
+leads to|Study,Knowledge,Exercise,Strength;Practice,Skill,Saving,Wealth
+is a milder form of|Warm,Hot,Cool,Cold;Like,Love,Dislike,Hate
+lives in|Lion,Den,Horse,Stable;Rabbit,Burrow,Pig,Sty;Cow,Barn,Bird,Nest
+belongs to a group called a|Lion,Pride,Wolf,Pack;Fish,School,Cattle,Herd
+is the organ for|Nose,Smell,Tongue,Taste
+comes before|January,February,Monday,Tuesday;Spring,Summer,Autumn,Winter;First,Second,Third,Fourth
+is a unit of|Meter,Length,Kilogram,Weight;Liter,Volume,Celsius,Temperature
+stores|Library,Books,Zoo,Animals;Museum,Artifacts,Bank,Money
+is worn on|Shoe,Foot,Hat,Head;Ring,Finger,Glasses,Nose
+heads|President,Executive Branch,Chief Justice,Judiciary;Mayor,City,Governor,Province;Mayor,City,Barangay Captain,Barangay`.split("\n").map(l=>{const [r,s]=l.split("|");return [r,s.split(";").map(x=>x.split(","))]});
+const all=GR.flatMap(([r,ss])=>ss.map(s=>s[3]));
+const put=(a,b,c,d,rel,wr)=>{const q=`${a.toUpperCase()} : ${b.toUpperCase()} :: ${c.toUpperCase()} : ____`;if(seen.has(q))return;const w=[...new Set(wr)].filter(x=>x!==d).slice(0,4);if(w.length<4)return;seen.add(q);const r=[CATW,q,[d,...w],`Step 1: Find how the first pair is related. "${a}" ${rel} "${b}". Step 2: Use the same relationship for the second pair. "${c}" ${rel} "${d}". Step 3: The answer is ${d}. Tip: say the relationship in a sentence, then test every choice with it.`];r.d=0;BANK.push(r)};
+put("Seed","Tree","Egg","Bird","develops into",["Nest","Feather","Shell","Wing"]);
+GR.forEach(([rel,ss])=>ss.forEach(([a,b,c,d])=>{const same=sf(ss.map(s=>s[3]).filter(x=>x!==d)),rest=sf(all.filter(x=>x!==d&&!same.includes(x)));put(a,b,c,d,rel,[b,...same,...rest])}));
+})();
+// ---- hard questions (multi-step, tempting wrong choices)
+(()=>{
+let sd=808;const R=()=>(sd=(sd*1103515245+12345)%2147483648)/2147483648,ri=(a,b)=>a+Math.floor(R()*(b-a+1)),pk=a=>a[Math.floor(R()*a.length)],sf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(R()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const seen=new Set(BANK.map(b=>b[1])),cap=s=>s[0].toUpperCase()+s.slice(1),L2=s=>s.trim().split("\n").map(l=>l.trim().split("|")),gcd=(a,b)=>b?gcd(b,a%b):a;
+const V="Verbal Ability \u00b7 ",N="Numerical Ability \u00b7 ",AL="Analytical Ability \u00b7 ",G="General Information \u00b7 ",SY=AL+"Symbolic Logic / Abstract Reasoning",WP=N+"Word Problems",peso=n=>"\u20b1"+n.toLocaleString("en-US");
+const add=(c,q,a,wr,sol,fig)=>{if(seen.has(q))return;const w=[...new Set(wr.map(String))].filter(x=>x!==String(a)).slice(0,4);if(w.length<3)return;seen.add(q);const r=[c,q,[String(a),...w],sol];if(fig)r.push(fig);r.d=2;BANK.push(r)};
+const num=(c,q,a,sol,f=x=>x)=>add(c,q,f(a),[a+1,a-1,a+2,a-2,a*2,a+5].filter(x=>x>0&&x!==a).map(f),sol);
+// ---- VERBAL
+const HV=L2(`ubiquitous|omnipresent|rare|found everywhere
+obfuscate|confuse|clarify|to make unclear on purpose
+pernicious|harmful|beneficial|causing serious harm in a gradual way
+equivocal|ambiguous|definite|open to more than one meaning
+magnanimous|generous|petty|generous and forgiving
+ostentatious|showy|modest|designed to impress others
+laconic|terse|talkative|using very few words
+recalcitrant|stubborn|obedient|resisting authority or control
+capricious|unpredictable|steady|changing mood or mind suddenly
+ameliorate|improve|worsen|to make something better
+perfunctory|superficial|thorough|done without care or interest
+gregarious|sociable|reclusive|fond of company
+belligerent|hostile|peaceful|eager to fight
+insidious|treacherous|harmless|spreading in a subtle, harmful way
+ostracize|exclude|include|to shut out from a group
+exacerbate|aggravate|alleviate|to make a problem worse
+tacit|implied|explicit|understood without being stated
+mitigate|lessen|intensify|to make less severe
+sycophant|flatterer|critic|a person who flatters to gain favor
+quintessential|typical|atypical|being the perfect example of something`),VC=V+"Word Meaning";
+HV.forEach(([w,s,a,m])=>{const W=w.toUpperCase(),o=k=>HV.map(x=>cap(x[k]));
+add(VC,`Choose the synonym of ${W}.`,cap(s),[cap(a),...sf(o(1).filter(x=>x!==cap(s))).slice(0,3)],`Step 1: ${W} means ${m}. Step 2: The word that means the same is ${s}. Step 3: Do not pick ${a}. It is the opposite and is placed there as a trap.`);
+add(VC,`Choose the antonym of ${W}.`,cap(a),[cap(s),...sf(o(2).filter(x=>x!==cap(a))).slice(0,3)],`Step 1: ${W} means ${m}. Step 2: The opposite is ${a}. Step 3: ${cap(s)} is a synonym, so it is a trap answer.`);
+add(VC,`${W} refers to something that is:`,cap(m),sf(o(3).filter(x=>x!==cap(m))).slice(0,4),`Step 1: Recall the meaning of ${W}. Step 2: It means ${m}. Step 3: Match it with the choice that says the same thing in other words.`)});
+const IE=`The effects of the new policy,~which was introduced last year,~is still~being studied.|2|The subject "effects" is plural, so use "are still being studied".
+Not only the teachers~but also the principal~were present~at the meeting.|2|With "not only...but also" the verb agrees with the nearer subject, "principal": "was present".
+Hardly had he~arrived when~the meeting~had started.|3|"Hardly had...when" is followed by the simple past: "started".
+The manager,~as well as his assistants,~are preparing~the annual budget.|2|The subject is "manager", so use "is preparing".
+No sooner did she~leave the office~than it~starts to rain.|3|Use the past tense: "started to rain".
+It was he~who were~chosen as~the group leader.|1|The verb agrees with "he": "who was chosen".
+If the supervisor~were to approve~the request, we~will start tomorrow.|2|An unlikely condition needs "would start".
+The employees~whom the manager~believed were honest~was rewarded.|3|The subject is "employees", so use "were rewarded".
+Every clerk and~every secretary~have to submit~a clearance.|2|"Every...and every" takes a singular verb: "has to submit".
+She suggested that~he takes~a leave of absence~for a week.|1|After "suggested that", use the base form: "take".
+My brother,~together with his friends,~go to the gym~every morning.|2|The subject is "brother", so use "goes".`.split("\n").map(l=>{const [s,i,e]=l.split("|");return [s.split("~"),+i,e]});
+IE.forEach(([sg,i,e])=>add(V+"Error Recognition",`Identify the bracketed part that contains an error: ${sg.map(x=>`[${x}]`).join(" ")}`,sg[i],sg.filter((_,k)=>k!==i),`Step 1: Find the real subject and verb, ignoring the extra phrases between them. Step 2: The error is in "${sg[i]}". Step 3: ${e}`));
+// ---- NUMERICAL
+const NM=["Ana","Ben","Carla","Dan"],TK=["finish the report","paint the room","sort the files"];
+for(const [a,b,c] of [[10,15,30],[12,24,24],[20,30,60],[6,12,12],[18,36,36],[8,16,16],[30,60,60]])for(const t of TK){const T=1/(1/a+1/b+1/c);num(WP,`${NM[0]} can ${t} in ${a} days, ${NM[1]} in ${b} days, and ${NM[2]} in ${c} days. If all three work together, how many days will it take?`,Math.round(T),`Step 1: Write each daily rate: 1/${a}, 1/${b}, 1/${c}. Step 2: Add them with a common denominator to get the combined rate: 1/${Math.round(T)} per day. Step 3: Days needed = ${Math.round(T)}.`)}
+for(const [a,b] of [[4,12],[6,12],[3,6],[10,15],[6,9],[4,6],[8,24]]){const T=a*b/(b-a);num(WP,`A pipe can fill a tank in ${a} hours, but a drain can empty the full tank in ${b} hours. If both are open at the same time, how many hours will it take to fill the tank?`,T,`Step 1: Filling rate = 1/${a} per hour. Draining rate = 1/${b} per hour. Step 2: Net rate = 1/${a} \u2212 1/${b} = ${b-a}/${a*b}. Step 3: Time = ${a*b}/${b-a} = ${T} hours.`)}
+for(const [a,b] of [[40,60],[30,60],[60,90],[20,30],[40,120],[50,75],[30,45]]){const v=2*a*b/(a+b);num(WP,`A car goes to a town at ${a} km/h and returns by the same road at ${b} km/h. What is the average speed for the whole trip (km/h)?`,v,`Step 1: Do not just average ${a} and ${b}. The times are different. Step 2: Use average speed = 2 \u00d7 ${a} \u00d7 ${b} \u00f7 (${a} + ${b}). Step 3: = ${2*a*b} \u00f7 ${a+b} = ${v} km/h.`)}
+for(let n=0;n<14;n++){const p=ri(1,4),q=ri(2,6),r=ri(2,5),s=ri(2,7);if(p===q||r===s)continue;const x=p*r,y=q*s,g=gcd(x,y),an=`${x/g}:${y/g}`;add(N+"Basic Operations",`If A:B = ${p}:${q} and B:C = ${r}:${s}, what is A:C?`,an,[`${p}:${s}`,`${p*s}:${q*r}`,`${x}:${y+1}`,`${p+r}:${q+s}`,`${x/g+1}:${y/g}`],`Step 1: Make the value of B the same in both ratios. Multiply A:B by ${r} and B:C by ${q}. Step 2: A:B = ${p*r}:${q*r} and B:C = ${q*r}:${q*s}. Step 3: A:C = ${p*r}:${q*s}, which reduces to ${an}.`)}
+for(let n=0;n<14;n++){const l=ri(20,90),sm=ri(10,60),d=ri(1,15)*2;const S=2*l-d+0;if(l-d<=0)continue;num(WP,`The sum of two numbers is ${2*l-d+d>0?(l+(l-d)):0} and their difference is ${d}. What is the larger number?`,l,`Step 1: Add the sum and the difference: ${l+(l-d)} + ${d} = ${2*l}. Step 2: This equals twice the larger number. Step 3: Larger = ${2*l} \u00f7 2 = ${l}.`)}
+for(const p of [25,100,150,300,400]){add(WP,`A is ${p}% more than B. By what percent is B less than A?`,100*p/(100+p)+"%",[p+"%",100-p>0?(100-p)+"%":"50%",(p/2)+"%",(100*p/(100+p)+5)+"%"],`Step 1: Let B = 100. Then A = ${100+p}. Step 2: B is ${p} less than A, so the decrease is ${p} out of ${100+p}. Step 3: ${p} \u00f7 ${100+p} \u00d7 100 = ${100*p/(100+p)}%. Do not use ${p}%, because the base changes.`)}
+for(const [p,r] of [[20,25],[50,100],[60,150],[75,300],[80,400]]){add(WP,`A is ${p}% less than B. By what percent is B more than A?`,r+"%",[p+"%",(100-p)+"%",(r-10)+"%",(r+10)+"%"],`Step 1: Let B = 100. Then A = ${100-p}. Step 2: B is ${p} more than A, and the base is now A = ${100-p}. Step 3: ${p} \u00f7 ${100-p} \u00d7 100 = ${r}%.`)}
+for(let n=0;n<16;n++){const k=ri(1,5),n1=2*k,n2=3*k;let a1=ri(60,90),a2=ri(60,90);while((2*a1+3*a2)%5)a2++;const av=(2*a1+3*a2)/5;num(N+"Basic Operations",`Section A has ${n1} students with an average of ${a1}. Section B has ${n2} students with an average of ${a2}. What is the average of all ${n1+n2} students?`,av,`Step 1: Total of Section A = ${n1} \u00d7 ${a1} = ${n1*a1}. Step 2: Total of Section B = ${n2} \u00d7 ${a2} = ${n2*a2}. Step 3: Overall average = ${n1*a1+n2*a2} \u00f7 ${n1+n2} = ${av}.`)}
+for(let n=0;n<14;n++){const C=100*ri(2,30),pf=pk([25,20,50,10]),S=C*(100+pf)/100;num(WP,`An item was sold for ${peso(S)}, which gave a profit of ${pf}% on the cost. What was the cost?`,C,`Step 1: Selling price is ${100+pf}% of the cost. Step 2: Cost = ${S} \u00f7 ${(100+pf)/100} = ${C}. Do not subtract ${pf}% from ${S}, because the percent is based on the cost.`,peso)}
+for(let n=0;n<14;n++){const B=ri(10,25),A=2*B-5,S=A+B;num(WP,`Five years ago, Rina was twice as old as Mia. The sum of their present ages is ${S}. How old is Rina now?`,A,`Step 1: Let Mia's age now be x. Then Rina's age now is 2(x \u2212 5) + 5 = 2x \u2212 5. Step 2: x + (2x \u2212 5) = ${S}, so 3x = ${S+5} and x = ${B}. Step 3: Rina = 2(${B}) \u2212 5 = ${A}.`)}
+for(let n=0;n<12;n++){const v1=5*ri(8,14),v2=5*ri(6,12),t=ri(2,6),D=(v1+v2)*t;num(WP,`Two trains ${D} km apart travel toward each other at ${v1} km/h and ${v2} km/h. After how many hours will they meet?`,t,`Step 1: They close the gap at the combined speed: ${v1} + ${v2} = ${v1+v2} km/h. Step 2: Time = distance \u00f7 combined speed = ${D} \u00f7 ${v1+v2} = ${t} hours.`)}
+// ---- ANALYTICAL
+const PS=[["the report is approved","the budget is released"],["the applicant passes the exam","the applicant is hired"],["the alarm sounds","the staff evacuates"],["it rains","the road becomes wet"],["the employee is late","a memo is issued"],["the clerk files the form","the record is updated"]];
+PS.forEach(([P,Q])=>{const IF=`If ${P}, then ${Q}.`,sq=`\u201c${Q}\u201d`,sp=`\u201c${P}\u201d`;
+add(SY,`${IF} It is known that ${Q}. Therefore:`,"Nothing definite follows",[`${sp} is true`,`${sp} is false`,`${sq} is false`,"Both statements are false"],`Step 1: The rule says P leads to Q. It does not say that only P can lead to Q. Step 2: Q is true, but something else may have caused it. Step 3: So nothing definite follows about P. This error is called affirming the consequent.`);
+add(SY,`${IF} It is known that it is not true that ${P}. Therefore:`,"Nothing definite follows",[`${sq} is false`,`${sq} is true`,`${sp} is true`,"Both statements are true"],`Step 1: The rule only tells us what happens when P is true. Step 2: P is false, so the rule says nothing about Q. Step 3: Q could still happen for another reason. This error is called denying the antecedent.`);
+add(SY,`${IF} It is known that it is not true that ${Q}. Therefore:`,`${sp} is false`,[`${sp} is true`,"Nothing definite follows",`${sq} is true`,"Both statements are true"],`Step 1: If P were true, Q would have to be true. Step 2: But Q is not true. Step 3: So P cannot be true. This valid step is called the contrapositive.`)});
+const NP=["Ana","Ben","Carl","Dina","Eli"],perms=a=>a.length<2?[a]:a.flatMap((x,i)=>perms([...a.slice(0,i),...a.slice(i+1)]).map(p=>[x,...p])),AP=perms(NP);
+for(let n=0;n<16;n++){const p=sf(NP),cd=[];for(let i=0;i<5;i++)for(let j=i+1;j<5;j++){cd.push([`${p[i]} sits somewhere to the left of ${p[j]}`,q=>q.indexOf(p[i])<q.indexOf(p[j])]);if(j==i+1)cd.push([`${p[i]} sits directly to the left of ${p[j]}`,q=>q.indexOf(p[j])==q.indexOf(p[i])+1])}
+cd.push([`${p[4]} sits at the far right`,q=>q[4]===p[4]]);const cl=[];let ok=0;for(const c of sf(cd)){cl.push(c);if(AP.filter(q=>cl.every(x=>x[1](q))).length===1){ok=1;break}if(cl.length>=6)break}
+if(!ok)continue;const k=n%2?1:2,nm=["","second from the left","","in the middle"][k+1]||"";add(SY,`Five people sit in a row. ${cl.map(c=>c[0]).join(". ")}. Who sits ${k==2?"in the middle":"second from the left"}?`,p[k],NP.filter(x=>x!==p[k]),`Step 1: Draw five seats in a row, numbered 1 to 5 from the left. Step 2: Place the clues that fix a seat or an adjacent pair first. Step 3: Use the "somewhere to the left" clues to fill the rest. Only one order fits: ${p.join(", ")}. Step 4: Seat ${k+1} belongs to ${p[k]}.`)}
+const {S,QM}=window.FIG,tr=(a,r)=>S(`<path d='M30 ${30-r} L${30+r*.7} ${30+r*.6} H${30-r*.7} Z' fill='#111' transform='rotate(${((a%360)+360)%360} 30 30)'/>`);
+let tn=0;for(const a0 of [0,90,180,270])for(const d of [90,-90])for(const g of [3,2]){if(tn>=12)break;const r0=7;add(SY,`Abstract Reasoning (Three Rules) ${++tn}. Which figure completes the series?`,tr(a0+3*d,r0+3*g),[tr(a0+3*d,r0+2*g),tr(a0+2*d,r0+3*g),tr(a0+d,r0+3*g),tr(a0,r0+3*g)],`Step 1: Check the direction of the triangle's tip. It turns 90 degrees ${d>0?"clockwise":"counterclockwise"} each step. Step 2: Check its size. It grows by the same amount each step. Step 3: The answer must satisfy BOTH rules. Turn the tip once more and make the triangle one step larger.`,[0,1,2].map(i=>tr(a0+d*i,r0+g*i)).join("")+QM)}
+const LT="ABCDEFGHIJKLMNOPQRSTUVWXYZ",cz=(w,k)=>w.split("").map(c=>LT[(LT.indexOf(c)+k+26)%26]).join("");
+for(const w of ["CIVIL","PUBLIC","SERVICE","OFFICE","MEMO","CLERK","BUDGET","RECORD","SALARY","AGENCY"])for(const k of [2,3])add(SY,`In a certain code, each letter is replaced by the letter ${k} places after it in the alphabet (A becomes ${LT[k]}). What is the code for ${w}?`,cz(w,k),[cz(w,-k),cz(w,k+1),cz(w,k-1),cz(w,2*k)],`Step 1: Move every letter ${k} places forward: ${w.split("").map(c=>c+"\u2192"+cz(c,k)).join(", ")}. Step 2: Write the new letters together: ${cz(w,k)}. Step 3: Moving backward instead gives ${cz(w,-k)}, which is a trap answer.`);
+// ---- GENERAL INFORMATION
+`A bill becomes law without the President's signature if he does not act on it within:|30 days|15 days|45 days|60 days|Article VI, Section 27: the bill lapses into law after thirty days from receipt.
+The vote needed to override a presidential veto is:|Two-thirds of all Members of each House|A majority of all Members of each House|Two-thirds of the House only|Three-fourths of the Senate|Article VI, Section 27 requires two-thirds of all Members of each House.
+Conviction in an impeachment trial requires the vote of:|Two-thirds of all Senators|A majority of all Senators|Three-fourths of all Senators|Two-thirds of the Senators present|Article XI, Section 3: two-thirds of all Members of the Senate.
+How many Justices compose the Supreme Court?|15|9|11|21|Article VIII, Section 4: a Chief Justice and fourteen Associate Justices.
+Justices of the Supreme Court retire at the age of:|70|65|75|80|Article VIII, Section 11 sets the retirement age at 70.
+Martial law may be declared for a period not exceeding:|60 days|30 days|90 days|120 days|Article VII, Section 18: not exceeding sixty days unless Congress extends it.
+The Chairman of the Civil Service Commission holds office for:|Seven years without reappointment|Six years with reappointment|Five years without reappointment|Seven years with one reappointment|Article IX-B, Section 1: appointment is for seven years without reappointment.
+The minimum age of the CSC Chairman and Commissioners at appointment is:|35|30|40|45|They must be at least thirty-five years old.
+Party-list representatives make up what share of the House of Representatives?|20%|10%|25%|30%|Article VI, Section 5: twenty percent of the total number of Members.
+A people's initiative to amend the Constitution needs the signatures of at least:|12% of registered voters, with 3% in every legislative district|10% of registered voters, with 2% in every district|15% of registered voters, with 5% in every district|20% of registered voters, with 3% in every district|Article XVII, Section 2.
+A plebiscite to ratify amendments is held not earlier than 60 days nor later than:|90 days after approval|30 days after approval|120 days after approval|180 days after approval|Article XVII, Section 4.
+A qualified voter must be at least 18 years old and a resident of the Philippines for at least:|One year|Six months|Two years|Three years|Article V, Section 1: one year in the Philippines and six months in the place of voting.
+The privilege of the writ of habeas corpus may be suspended only in case of:|Invasion or rebellion, when public safety requires it|Any national emergency|An economic crisis|A strong typhoon|Article VII, Section 18.
+Under RA 6713, public officials must act promptly on letters and requests within:|15 working days|5 working days|30 working days|60 days|RA 6713, Section 5(a) requires action within fifteen working days from receipt.
+Under RA 11032, a simple transaction must be processed within:|3 working days|5 working days|7 working days|10 working days|Simple transactions take 3 working days, complex 7, and highly technical 20.
+Under RA 11032, a complex transaction must be processed within:|7 working days|3 working days|10 working days|20 working days|Complex transactions take up to 7 working days.
+Under RA 11032, a highly technical transaction must be processed within:|20 working days|7 working days|15 working days|30 working days|Highly technical transactions take up to 20 working days.
+The basic political unit of the Philippines under the Local Government Code is the:|Barangay|Municipality|Province|City|RA 7160 calls the barangay the basic political unit.
+No person shall be deprived of life, liberty or property without:|Due process of law|A court order|Legislative approval|Presidential consent|Article III, Section 1 of the Bill of Rights.
+The power of the courts to declare a law unconstitutional is called:|Judicial review|Judicial legislation|Executive privilege|Police power|Judicial review belongs to the Supreme Court and lower courts.
+Which Constitutional Commission examines and audits government funds?|Commission on Audit|Civil Service Commission|Commission on Elections|Office of the Ombudsman|Article IX-D creates the Commission on Audit.
+The Sandiganbayan is the:|Anti-graft court|Election court|Labor court|Constitutional commission|It tries graft and corruption cases involving public officials.
+The Office of the Ombudsman is created under which Article?|Article XI|Article IX|Article VII|Article VIII|Article XI, Accountability of Public Officers.`.split("\n").forEach(l=>{const [q,a,w1,w2,w3,e]=l.split("|");add(/RA 6713/.test(q)?G+"R.A. No. 6713":/RA 1103|RA 7160|Sandiganbayan/.test(q)?G+"Other Laws & History":G+"Philippine Constitution",q,a,[w1,w2,w3],`Step 1: Recall the rule. Step 2: ${e} Step 3: The tempting wrong choices use nearby numbers or similar terms, so check the exact figure.`)});
+})();
+// ---- UI
+const $=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const subj=b=>b[0].split(" \u00b7 ")[0],SUBJ=["Verbal Ability","Numerical Ability","Analytical Ability","General Information"],WT={"Verbal Ability":30,"Numerical Ability":30,"Analytical Ability":35,"General Information":5},SL=s=>s+" ("+WT[s]+"%)",DL=["Easy","Medium","Hard"],BASE={"Word Meaning":0,"Basic Operations":0,"Word Analogy":0,"Other Laws & History":0,"Philippine Constitution":1,"R.A. No. 6713":1,"Sentence Completion":1,"Error Recognition":1,"Sentence Structure":1,"Number Sequence":1,"Word Problems":1,"Data Interpretation":1,"Peace and Human Rights Issues and Concepts":1,"Environment Management and Protection":1,"Paragraph Organization":2,"Reading Comprehension":2,"Symbolic Logic / Abstract Reasoning":1,"Identifying Assumptions & Drawing Conclusions":2};
+function dif(b){const t=b[0].split(" \u00b7 ")[1],q=b[1],s=b[3];let d=BASE[t]??1;if(b[4])d=/grows|more circle|alternates|more side|One more square/.test(s)?0:/cycle|Two rules|two rules/.test(s)?2:1;else if(t==="Word Meaning")d=/antonym/.test(q)?1:/means:/.test(q)?2:0;else if(t==="Word Problems")d=/together|ratio|consecutive|twice|times|older/i.test(q)?2:/discount|profit|interest/.test(q)?1:0;else if(t==="Number Sequence")d=/multipl/.test(s)?2:0;else if(t==="Basic Operations")d=/Evaluate/.test(q)?1:0;return d}
+BANK.forEach(b=>{if(b.d==null)b.d=dif(b);let h=5381;for(const c of b[1]+b[2][0])h=(h*33^c.charCodeAt(0))>>>0;b.id=h.toString(36)});
+let DB={bm:[],miss:[],hist:[],stat:{},th:"dark"};try{Object.assign(DB,JSON.parse(localStorage.getItem("cse2")||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem("cse2",JSON.stringify(DB))}catch(e){}};
+document.documentElement.dataset.theme=DB.th;
+const TIP={"Word Meaning":"Read the word in context, then drop options that mean the opposite. Prefixes like un-, in- and mal- are clues.","Sentence Completion":"Look for clue words such as but, although and therefore. They show contrast or result.","Error Recognition":"Check subject-verb agreement, tense, pronoun case and spelling, in that order.","Sentence Structure":"A complete sentence needs a subject and a verb that express a whole thought.","Paragraph Organization":"Find the topic sentence first, then follow signal words like first, next, finally and as a result.","Reading Comprehension":"Answer only from the passage. Read the question first, then scan for that detail.","Basic Operations":"Follow PEMDAS. Convert percents and fractions to decimals when it is faster.","Number Sequence":"Check differences first, then ratios, then alternating or squared patterns.","Word Problems":"Let x be the unknown, turn each sentence into an equation, then check your answer.","Word Analogy":"State the relationship in one sentence, then test each option with the same sentence.","Symbolic Logic / Abstract Reasoning":"Sketch All, Some and No statements as circles. Accept only what must be true.","Identifying Assumptions & Drawing Conclusions":"A conclusion must follow from the statements alone, without outside knowledge.","Data Interpretation":"Read the labels and units first, then compute only what the question asks.","Philippine Constitution":"Link each article to its theme: III Bill of Rights, VII Executive, IX-B Civil Service, XI Accountability, XIII Social Justice.","R.A. No. 6713":"Memorize the eight norms of conduct and the SALN rules.","Peace and Human Rights Issues and Concepts":"Pair each law with the group it protects: women, children, workers, indigenous peoples.","Environment Management and Protection":"Pair each law with the resource it protects: air, water, waste, wildlife, climate.","Other Laws & History":"Connect each law number to its title and year."};
+const S={subj:"All",topic:"All",cnt:10,mode:"study",pool:"all",diff:"All"},Q={};let view="practice",BQ="",LIM=50;
+const pool=()=>BANK.filter(b=>(S.subj==="All"||subj(b)===S.subj)&&(S.topic==="All"||b[0]===S.topic)&&(S.diff==="All"||DL[b.d]===S.diff)&&(S.pool==="all"||(S.pool==="bm"?DB.bm:DB.miss).includes(b.id)));
+const cnt=f=>BANK.filter(f).length;
+const chip=(a,v,t,on,n)=>`<button class="chip${on?" on":""}" data-a="${a}" data-v="${esc(v)}">${esc(t)}${n!=null?`<span class="n">${n}</span>`:""}</button>`;
+const acc=p=>{let c=0,t=0;for(const k in DB.stat)if(k.startsWith(p)){c+=DB.stat[k][0];t+=DB.stat[k][1]}return t?Math.round(c/t*100)+"% accuracy":"No data"};
+function snapshot(){const a=DB.hist.length?Math.round(DB.hist.reduce((p,h)=>p+h.s/h.n*100,0)/DB.hist.length)+"%":"\u2014";
+return `<div class="pn"><h3>Study Snapshot</h3><div class="kv"><div><span class="mut">Question Bank</span><b class="mono">${BANK.length}</b></div><div><span class="mut">Passing Standard</span><b class="mono">80%</b></div><div><span class="mut">Sessions Taken</span><b class="mono">${DB.hist.length}</b></div><div><span class="mut">Average Score</span><b class="mono">${a}</b></div></div></div>`}
+function breakdown(){return `<div class="pn"><h3>Syllabus Breakdown</h3><p class="mut sm">Item bank distribution and your recorded accuracy per domain. Tap a domain to practice it.</p>${SUBJ.map(s=>{const n=cnt(b=>subj(b)===s);return `<button class="sr" data-a="drill" data-v="${s}"><div class="row"><span>${SL(s)}</span><span class="mono mut sm">${n} items \u00b7 ${acc(s)}</span></div><div class="bar"><i style="width:${n/BANK.length*100}%"></i></div></button>`}).join("")}</div>`}
+function vPractice(){const tops=[...new Set(BANK.filter(b=>S.subj==="All"||subj(b)===S.subj).map(b=>b[0]))].sort(),n=pool().length,k=S.cnt?Math.min(S.cnt,n):n;
+return `<div class="eye">Professional Level Practice \u00b7 CSC Syllabus \u00b7 Made by Jelaica Baron</div><div class="hd"><div><h1>Civil Service Exam Reviewer</h1><p class="mut">Practice across all four Civil Service Commission competency areas with instant answer checks and step-by-step worked solutions. Exam weights: Verbal 30% \u00b7 Numerical 30% \u00b7 Analytical 35% \u00b7 General Information 5%.</p></div><div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn2" data-a="mock">100-Item Mock Exam</button><button class="btn2" data-a="mock" data-v="hard">Hard Mock Exam</button><button class="btn2" data-a="theme">${DB.th==="light"?"Dark Mode":"Light Mode"}</button></div></div>
+<div class="g"><section class="pn"><div class="row"><h3>1. Choose Subject Area</h3><span class="mono mut sm">${cnt(b=>S.subj==="All"||subj(b)===S.subj)} matching items</span></div><div class="chips">${chip("subj","All","All Subjects",S.subj==="All",BANK.length)}${SUBJ.map(s=>chip("subj",s,SL(s),S.subj===s,cnt(b=>subj(b)===s))).join("")}</div>
+<h3>2. Choose Topic</h3><div class="chips">${chip("topic","All","All Topics",S.topic==="All")}${tops.map(t=>chip("topic",t,t.split(" \u00b7 ")[1]||t,S.topic===t,cnt(b=>b[0]===t))).join("")}</div>
+<div class="two"><div><h3>3. Number of Questions</h3><div class="chips mono">${[10,20,50,100,0].map(x=>chip("cnt",x,x||"All",S.cnt===x)).join("")}</div></div><div><h3>4. Practice Mode</h3><div class="seg">${[["study","Untimed Study"],["timed","Timed Drill"]].map(([v,t])=>`<button class="${S.mode===v?"on":""}" data-a="mode" data-v="${v}">${t}</button>`).join("")}</div><p class="mut sm">${S.mode==="study"?"Untimed practice with immediate answer explanations.":"60 seconds per question. Unanswered items count as missed."}</p></div></div>
+<h3>5. Question Pool</h3><div class="chips">${chip("pool","all","All Questions",S.pool==="all")}${chip("pool","bm",`Bookmarked (${DB.bm.length})`,S.pool==="bm")}${chip("pool","miss",`Previously Missed (${DB.miss.length})`,S.pool==="miss")}</div>
+<h3>6. Difficulty</h3><div class="chips">${["All","Easy","Medium","Hard"].map(x=>chip("diff",x,x,S.diff===x)).join("")}</div>
+<div class="row ft"><span class="mut">Ready to draw <b class="mono">${k}</b> questions \u00b7 Passing target <b class="mono">80%</b></span><button class="btn" data-a="start" ${n?"":"disabled"}>Start Reviewing</button></div></section><aside>${snapshot()}${breakdown()}</aside></div>`}
+function feedback(b){const ok=Q.pick>=0&&Q.opts[Q.pick].ok,right=Q.opts.find(x=>x.ok).t,top=b[0].split(" \u00b7 ")[1]||"",st=/Numerical|Analytical/.test(b[0])||/Step 1:/.test(b[3]),steps=b[3].split(/(?<=[.?!])\s+(?=[A-Z0-9\u20b1(\u2212])/);
+return `<div class="fb ${ok?"g":"b"}"><b>${ok?"Correct!":Q.pick<0?"Time is up.":"Not quite."}</b> ${ok||Q.pick<0?"":`You chose <u>${esc(Q.opts[Q.pick].t)}</u>. `}The correct answer is <u>${esc(right)}</u>.</div><div class="ex"><h4>${st?"Step-by-step solution":"Explanation"}</h4>${st&&steps.length>1?`<ol>${steps.map(s=>`<li>${esc(s.replace(/^Step \d+:\s*/,""))}</li>`).join("")}</ol>`:`<p>${esc(b[3])}</p>`}</div><div class="tip"><b>Exam tip:</b> ${esc(TIP[top]||"Eliminate wrong options first, then verify your choice.")}</div>`}
+function vQuiz(){const b=Q.deck[Q.i];return `<div class="qtop"><span class="mut">${esc(b[0])} &middot; <b class="dl d${b.d}">${DL[b.d]}</b></span><span class="mono">${Q.i+1} / ${Q.deck.length}${S.mode==="timed"?` \u00b7 <b id="tm">${Q.t}s</b>`:""}</span></div><div class="bar q"><i style="width:${Q.i/Q.deck.length*100}%"></i></div>
+<section class="pn"><div class="row" style="flex-wrap:nowrap"><div class="q">${esc(b[1])}${b[4]?`<div class="fg">${b[4]}</div>`:""}</div><button class="star" data-a="bmq" title="Bookmark">${DB.bm.includes(b.id)?"\u2605":"\u2606"}</button></div>${Q.opts.map((x,k)=>`<button class="opt${Q.done?(x.ok?" ok":k===Q.pick?" no":""):""}" data-a="pick" data-v="${k}" ${Q.done?"disabled":""}><b>${"ABCDE"[k]}</b><span>${x.t[0]==="<"?x.t:esc(x.t)}</span></button>`).join("")}${Q.done?feedback(b)+`<button class="btn full" data-a="next">${Q.i+1>=Q.deck.length?"See Results":"Next Question"}</button>`:""}</section><div class="row mut"><span>Score: ${Q.score}</span><a href="#" data-a="quit">Quit session</a></div>`}
+function vResults(){const n=Q.deck.length,p=Math.round(Q.score/n*100);return `<section class="pn tc"><div class="huge mono">${p}%</div><p>${Q.score} of ${n} correct \u00b7 ${p>=80?"You are at passing level. Keep it up!":"Below the 80% passing target. Review the missed items and try again."}</p>${Q.miss.length?`<button class="btn full" data-a="retry">Retry ${Q.miss.length} missed question${Q.miss.length>1?"s":""}</button>`:""}<button class="btn2 full" data-a="nav" data-v="practice">New session</button><button class="btn2 full" data-a="nav" data-v="history">View history</button></section>`}
+function bankList(){const q=BQ.toLowerCase(),l=pool().filter(b=>!q||b[1].toLowerCase().includes(q)||b[0].toLowerCase().includes(q));return l.slice(0,LIM).map(b=>`<div class="bi"><details><summary><small class="mut">${esc(b[0])} &middot; <b class="dl d${b.d}">${DL[b.d]}</b></small><br>${esc(b[1])}</summary>${b[4]?`<div class="fg">${b[4]}</div>`:""}${b[2].map((x,k)=>`<div class="bo${k?"":" ok"}">${k?"":"\u2714 "}${x[0]==="<"?x:esc(x)}</div>`).join("")}<div class="ex"><p>${esc(b[3])}</p></div></details><button class="star" data-a="bmb" data-v="${b.id}">${DB.bm.includes(b.id)?"\u2605":"\u2606"}</button></div>`).join("")+(l.length>LIM?`<p><button class="btn2" data-a="more">Show more (${l.length-LIM} left)</button></p>`:"")||`<p class="mut">No questions match.</p>`}
+function vBank(){return `<h1>Question Bank</h1><p class="mut">Browse every question with its answer and solution. Tap a star to bookmark.</p><div class="chips">${chip("subj","All","All Subjects",S.subj==="All",BANK.length)}${SUBJ.map(s=>chip("subj",s,SL(s),S.subj===s,cnt(b=>subj(b)===s))).join("")}</div><input type="search" id="bq" placeholder="Search questions" value="${esc(BQ)}"><section class="pn" id="bl">${bankList()}</section>`}
+function vHistory(){return `<h1>History</h1><section class="pn">${DB.hist.length?DB.hist.map(h=>`<div class="row" style="border-bottom:1px solid var(--bd);padding:10px 0"><span>${new Date(h.t).toLocaleString()}<br><small class="mut">${esc(h.l)} \u00b7 ${h.m==="timed"?"Timed":"Study"}</small></span><b class="mono" style="color:${h.s/h.n>=.8?"var(--ok)":"var(--no)"}">${h.s}/${h.n} \u00b7 ${Math.round(h.s/h.n*100)}%</b></div>`).join("")+`<p><button class="btn2" data-a="clearH">Clear history</button></p>`:`<p class="mut">No sessions yet. Start reviewing to see your scores here.</p>`}</section>`}
+function vSyllabus(){return `<h1>Syllabus</h1><p class="mut">Tap any topic to practice it. Accuracy is recorded on this device.</p>${SUBJ.map(s=>{const ts=[...new Set(BANK.filter(b=>subj(b)===s).map(b=>b[0]))].sort();return `<section class="pn"><h3>${SL(s)} <span class="mono mut sm">${cnt(b=>subj(b)===s)} items \u00b7 ${acc(s)}</span></h3>${ts.map(t=>`<button class="sr" data-a="drill" data-v="${esc(t)}"><div class="row"><span>${esc(t.split(" \u00b7 ")[1]||t)}</span><span class="mono mut sm">${cnt(b=>b[0]===t)} items \u00b7 ${acc(t)}</span></div></button>`).join("")}</section>`}).join("")}`}
+function render(){$("app").innerHTML={practice:vPractice,quiz:vQuiz,results:vResults,bank:vBank,history:vHistory,syllabus:vSyllabus}[view]();document.querySelectorAll("nav .t").forEach(b=>b.classList.toggle("on",b.dataset.v===(view==="quiz"||view==="results"?"practice":view)))}
+function go(v){clearInterval(Q.iv);view=v;render();scrollTo(0,0)}
+function begin(list,label){if(!list.length)return;Q.deck=sh(list).slice(0,S.cnt||list.length);Q.i=0;Q.score=0;Q.miss=[];Q.label=label;view="quiz";load()}
+function load(){Q.opts=sh(Q.deck[Q.i][2].map((t,k)=>({t,ok:!k})));Q.done=0;Q.pick=-1;Q.t=60;clearInterval(Q.iv);if(S.mode==="timed")Q.iv=setInterval(()=>{if(--Q.t<=0)answer(-1);else{const e=$("tm");if(e)e.textContent=Q.t+"s"}},1000);render();scrollTo(0,0)}
+function answer(k){if(Q.done)return;clearInterval(Q.iv);Q.done=1;Q.pick=k;const b=Q.deck[Q.i],ok=k>=0&&Q.opts[k].ok,st=DB.stat[b[0]]||(DB.stat[b[0]]=[0,0]);st[1]++;if(ok){st[0]++;Q.score++;DB.miss=DB.miss.filter(x=>x!==b.id)}else{Q.miss.push(b);if(!DB.miss.includes(b.id))DB.miss.push(b.id)}save();render()}
+const tog=id=>{DB.bm=DB.bm.includes(id)?DB.bm.filter(x=>x!==id):[...DB.bm,id];save()};
+const A={nav:v=>go(v),subj:v=>{S.subj=v;S.topic="All";render()},topic:v=>{S.topic=v;render()},cnt:v=>{S.cnt=+v;render()},mode:v=>{S.mode=v;render()},pool:v=>{S.pool=v;render()},diff:v=>{S.diff=v;render()},mock:v=>{S.cnt=0;S.mode="study";S.diff="All";S.pool="all";const g=(s,n)=>v==="hard"?[...sh(BANK.filter(b=>subj(b)===s&&b.d===2)),...sh(BANK.filter(b=>subj(b)===s&&b.d===1))].slice(0,n):sh(BANK.filter(b=>subj(b)===s)).slice(0,n);begin([...g("Verbal Ability",30),...g("Numerical Ability",30),...g("Analytical Ability",35),...g("General Information",5)],v==="hard"?"Hard mock exam (100 items)":"Mock exam (100 items)")},
+theme:()=>{DB.th=DB.th==="light"?"dark":"light";document.documentElement.dataset.theme=DB.th;save();render()},
+start:()=>begin(pool(),S.subj==="All"?"All subjects":(S.topic==="All"?S.subj:S.topic.split(" \u00b7 ")[1])),
+quick:()=>{S.subj="All";S.topic="All";S.pool="all";S.cnt=10;begin(BANK,"Quick drill")},
+pick:v=>answer(+v),next:()=>{Q.i++;if(Q.i>=Q.deck.length){DB.hist.unshift({t:Date.now(),s:Q.score,n:Q.deck.length,m:S.mode,l:Q.label});DB.hist=DB.hist.slice(0,100);save();go("results")}else load()},
+quit:()=>go("practice"),bmq:()=>{tog(Q.deck[Q.i].id);render()},bmb:v=>{tog(v);$("bl").innerHTML=bankList()},more:()=>{LIM+=50;$("bl").innerHTML=bankList()},
+drill:v=>{S.subj=v.split(" \u00b7 ")[0];S.topic=v.includes(" \u00b7 ")?v:"All";S.pool="all";go("practice")},
+clearH:()=>{DB.hist=[];save();render()},retry:()=>{const m=Q.miss;Q.deck=sh(m);Q.i=0;Q.score=0;Q.miss=[];Q.label="Missed items";view="quiz";load()}};
+document.addEventListener("click",e=>{const t=e.target.closest("[data-a]");if(!t)return;e.preventDefault();A[t.dataset.a](t.dataset.v)});
+document.addEventListener("input",e=>{if(e.target.id==="bq"){BQ=e.target.value;LIM=50;$("bl").innerHTML=bankList()}});
+render();
+</script>
+</body>
+</html>
